@@ -57,6 +57,6 @@ class CircularListSteps<E> {
 
     @Then("throws $exceptionClass")
     public final void whenThrew(Class exceptionCls) {
-        // TODO
-    }
+        Assert.assertEquals(exceptionCls, thrownByArrayBased.getClass());
+        Assert.assertEquals(exceptionCls, thrownByReferenceBased.getClass());    }
 }
