@@ -1,4 +1,4 @@
-import java.util.Iterable;
+import java.util.Iterator;
 
 public interface CircularList<E> extends Iterable<E> {
 
