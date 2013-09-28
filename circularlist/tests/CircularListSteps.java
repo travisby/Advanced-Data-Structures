@@ -27,7 +27,8 @@ public class CircularListSteps {
 
     @When("I get item $index")
     public void getItem(int index) {
-        // TODO
+        arrayBasedItem = arrayBased.get(index);
+        referenceBasedItem = referenceBased.get(index);
     }
 
     @Then("it is item $index")
