@@ -33,6 +33,7 @@ public class CircularListSteps {
 
     @Then("it is item $index")
     public void isEqualToItemAtIndex(int index) {
-        // TODO
+        assert arrayBased.get(index).equals(arrayBasedItem);
+        assert referenceBased.get(index).equals(referenceBasedItem);
     }
 }
