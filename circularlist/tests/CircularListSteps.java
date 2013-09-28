@@ -10,9 +10,19 @@ import org.jbehave.core.annotations.When;
 
 public class CircularListSteps {
 
+    private CircularListArrayBased<Integer> arrayBased;
+    private CircularListReferenceBased<Integer> referenceBased;
+    private Integer arrayBasedItem;
+    private Integer referenceBasedItem;
+
     @Given("a circularlist size $size")
     public void setList(int size) {
-        // TODO
+        arrayBased = new CircularListArrayBased<Integer>();
+        referenceBased = new CircularListReferenceBased<Integer>();
+        for (int i = 0; i < size; i++) {
+            arrayBased.add(i, i);
+            referenceBased.add(i, i);
+        }
     }
 
     @When("I get item $index")
