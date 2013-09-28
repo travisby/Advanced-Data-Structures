@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/CircularList/CircularList.iml" filepath="$PROJECT_DIR$/CircularList/CircularList.iml" />
+      <module fileurl="file://$PROJECT_DIR$/circularlist/circularlist.iml" filepath="$PROJECT_DIR$/circularlist/circularlist.iml" />
     </modules>
   </component>
 </project>
