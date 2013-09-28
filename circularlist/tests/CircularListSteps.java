@@ -16,6 +16,8 @@ class CircularListSteps<E> {
     private CircularListReferenceBased<E> referenceBased = null;
     private E arrayBasedItem = null;
     private E referenceBasedItem = null;
+    private Exception thrownByArrayBased = null;
+    private Exception thrownByReferenceBased = null;
 
     CircularListSteps() {
     }
@@ -30,15 +32,31 @@ class CircularListSteps<E> {
         }
     }
 
+
     @When("I get item $index")
     public final void getItem(int index) {
         arrayBasedItem = arrayBased.get(index);
         referenceBasedItem = referenceBased.get(index);
     }
 
+    @When("I add item $item to index $index")
+    public final void addItem(E item, int index) {
+        // TODO
+    }
+
+    @When("I remove item $index")
+    public final void removeItem(int index) {
+        // TODO
+    }
+
     @Then("it is item $index")
     public final void isEqualToItemAtIndex(int index) {
         Assert.assertEquals(arrayBased.get(index), arrayBasedItem);
         Assert.assertEquals(referenceBased.get(index), referenceBasedItem);
+    }
+
+    @Then("throws $exceptionClass")
+    public final void whenThrew(Class exceptionCls) {
+        // TODO
     }
 }
