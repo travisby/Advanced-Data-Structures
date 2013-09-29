@@ -12,7 +12,9 @@ import org.jbehave.core.annotations.When;
 @SuppressWarnings({"InstanceVariableOfConcreteClass", "SuppressionAnnotation", "UnusedDeclaration", "Annotation", "ClassWithoutLogger", "PublicMethodWithoutLogging", "ClassHasNoToStringMethod", "ClassWithTooManyFields", "UnqualifiedFieldAccess", "LocalCanBeFinal", "AssertEqualsMayBeAssertSame", "MessageMissingOnJUnitAssertion", "UseOfObsoleteAssert", "InstanceVariableNamingConvention", "NonBooleanMethodNameMayNotStartWithQuestion"})
 class CircularListSteps<E> {
 
+    @SuppressWarnings("FieldMayBeStatic")
     private final int integerReturn = 0;
+    @SuppressWarnings("FieldMayBeStatic")
     private final boolean booleanReturn = false;
     private final E itemReturn = null;
     private CircularListArrayBased<E> arrayBased = null;
@@ -111,7 +113,7 @@ class CircularListSteps<E> {
         Assert.assertEquals(value, referenceBasedItem);
     }
 
-    @SuppressWarnings({"NestedMethodCall", "rawtypes"})
+    @SuppressWarnings({"NestedMethodCall"})
     @Then("throws $exceptionClass")
     public void whenThrew(Class exceptionCls) {
         Assert.assertEquals(exceptionCls, thrownByArrayBased.getClass());

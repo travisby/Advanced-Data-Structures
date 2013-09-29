@@ -5,7 +5,7 @@ import java.util.Iterator;
  * Date: 9/28/13
  * Time: 6:55 PM
  */
-@SuppressWarnings({"Annotation", "ClassWithoutLogger", "PublicMethodWithoutLogging", "SuppressionAnnotation", "LocalCanBeFinal"})
+@SuppressWarnings({"Annotation", "ClassWithoutLogger", "PublicMethodWithoutLogging", "SuppressionAnnotation", "LocalCanBeFinal", "PublicConstructor"})
 public class CircularListReferenceBased<E> implements CircularList<E> {
 
 
