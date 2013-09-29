@@ -5,8 +5,10 @@ import java.util.Iterator;
  * Date: 9/28/13
  * Time: 6:51 PM
  */
-@SuppressWarnings({"Annotation", "ClassWithoutLogger", "PublicMethodWithoutLogging", "SuppressionAnnotation"})
+@SuppressWarnings({"Annotation", "ClassWithoutLogger", "PublicMethodWithoutLogging", "SuppressionAnnotation", "LocalCanBeFinal"})
+
 public class CircularListArrayBased<E> implements CircularList<E> {
+
     public CircularListArrayBased() {
     }
 
@@ -16,7 +18,7 @@ public class CircularListArrayBased<E> implements CircularList<E> {
      * @return true if the list is empty, otherwise false
      */
     @Override
-    public final boolean isEmpty() {
+    public boolean isEmpty() {
         // TODO
         return false;
     }
@@ -27,7 +29,7 @@ public class CircularListArrayBased<E> implements CircularList<E> {
      * @return the number of elements in the list without wrapping
      */
     @Override
-    public final int size() {
+    public int size() {
         // TODO
         return 0;
     }
@@ -36,7 +38,7 @@ public class CircularListArrayBased<E> implements CircularList<E> {
      * Removes all elements from the list.
      */
     @Override
-    public final void clear() {
+    public void clear() {
         // TODO
 
     }
@@ -48,7 +50,7 @@ public class CircularListArrayBased<E> implements CircularList<E> {
      * @return true if the list was modified
      */
     @Override
-    public final boolean add(E item) {
+    public boolean add(E item) {
         // TODO
         return false;
     }
@@ -62,7 +64,7 @@ public class CircularListArrayBased<E> implements CircularList<E> {
      * @throws IndexOutOfBoundsException if index is negative
      */
     @Override
-    public final void add(int index, E item) throws IndexOutOfBoundsException {
+    public void add(int index, E item) throws IndexOutOfBoundsException {
         // TODO
 
     }
@@ -75,7 +77,7 @@ public class CircularListArrayBased<E> implements CircularList<E> {
      * @throws IndexOutOfBoundsException if index is negative
      */
     @Override
-    public final E remove(int index) throws IndexOutOfBoundsException {
+    public E remove(int index) throws IndexOutOfBoundsException {
         // TODO
         return null;
     }
@@ -88,7 +90,7 @@ public class CircularListArrayBased<E> implements CircularList<E> {
      * @throws IndexOutOfBoundsException if index is negative
      */
     @Override
-    public final E get(int index) throws IndexOutOfBoundsException {
+    public E get(int index) throws IndexOutOfBoundsException {
         // TODO
         return null;
     }
@@ -99,7 +101,7 @@ public class CircularListArrayBased<E> implements CircularList<E> {
      * list is not empty, it should never stop.
      */
     @Override
-    public final Iterator<E> iterator() {
+    public Iterator<E> iterator() {
         // TODO
         return null;
     }
