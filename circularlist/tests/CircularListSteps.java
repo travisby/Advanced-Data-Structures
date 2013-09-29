@@ -9,6 +9,8 @@ import org.jbehave.core.annotations.Given;
 import org.jbehave.core.annotations.Then;
 import org.jbehave.core.annotations.When;
 
+import java.security.PublicKey;
+
 @SuppressWarnings({"InstanceVariableOfConcreteClass", "SuppressionAnnotation", "UnusedDeclaration", "Annotation", "ClassWithoutLogger", "PublicMethodWithoutLogging", "ClassHasNoToStringMethod"})
 class CircularListSteps<E> {
 
@@ -69,14 +71,61 @@ class CircularListSteps<E> {
         }
     }
 
-    @Then("it is item $index")
-    public final void isEqualToItemAtIndex(int index) {
-        Assert.assertEquals(arrayBased.get(index), arrayBasedItem);
-        Assert.assertEquals(referenceBased.get(index), referenceBasedItem);
+    @When("I ask if it is an empty list")
+    public final void setIsEmpty() {
+        // TODO
+    }
+
+    @When("I add item $item to the end of the list")
+    public final void addItemToEnd(E item) {
+        // TODO
+    }
+
+    @When("I ask for the size")
+    public final void setSize() {
+        // TODO
+    }
+
+    @When("I clear the list")
+    public final void clear() {
+        // TODO
+    }
+
+    @Then("it is item $value")
+    public final void isEqualToItemAtIndex(E value) {
+        Assert.assertEquals(value, arrayBasedItem);
+        Assert.assertEquals(value, referenceBasedItem);
     }
 
     @Then("throws $exceptionClass")
     public final void whenThrew(Class exceptionCls) {
         Assert.assertEquals(exceptionCls, thrownByArrayBased.getClass());
-        Assert.assertEquals(exceptionCls, thrownByReferenceBased.getClass());    }
+        Assert.assertEquals(exceptionCls, thrownByReferenceBased.getClass);
+    }
+
+    @Then("our list is $list")
+    public final void ourListIs(E[] list) {
+        // TODO
+    }
+
+    @Then("the boolean return should be $tf")
+    public final void boolReturn(boolean tf) {
+        // TODO
+    }
+
+    @Then("the item return should be $item")
+        public final void itemReturn(E item) {
+            // TODO
+        }
+
+    @Then("the integer return should be $value")
+    public final void intReturn(int value) {
+        // TODO
+    }
+
+    @Then("the size should be $size")
+    public final void isSize(int size) {
+        // TODO
+    }
+
 }
