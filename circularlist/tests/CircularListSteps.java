@@ -9,8 +9,6 @@ import org.jbehave.core.annotations.Given;
 import org.jbehave.core.annotations.Then;
 import org.jbehave.core.annotations.When;
 
-import java.security.PublicKey;
-
 @SuppressWarnings({"InstanceVariableOfConcreteClass", "SuppressionAnnotation", "UnusedDeclaration", "Annotation", "ClassWithoutLogger", "PublicMethodWithoutLogging", "ClassHasNoToStringMethod"})
 class CircularListSteps<E> {
 
@@ -34,7 +32,6 @@ class CircularListSteps<E> {
         }
     }
 
-
     @When("I get item $index")
     public final void getItem(int index) {
         arrayBasedItem = arrayBased.get(index);
@@ -45,13 +42,13 @@ class CircularListSteps<E> {
     public final void addItem(E item, int index) {
         try {
             arrayBased.add(index, item);
-        } catch(Exception e) {
+        } catch (Exception e) {
             thrownByArrayBased = e;
         }
 
         try {
             referenceBased.add(index, item);
-        } catch(Exception e) {
+        } catch (Exception e) {
             thrownByReferenceBased = e;
         }
     }
@@ -60,13 +57,13 @@ class CircularListSteps<E> {
     public final void removeItem(int index) {
         try {
             arrayBased.remove(index);
-        } catch(Exception e) {
+        } catch (Exception e) {
             thrownByArrayBased = e;
         }
 
         try {
             referenceBased.remove(index);
-        } catch(Exception e) {
+        } catch (Exception e) {
             thrownByReferenceBased = e;
         }
     }
@@ -100,7 +97,7 @@ class CircularListSteps<E> {
     @Then("throws $exceptionClass")
     public final void whenThrew(Class exceptionCls) {
         Assert.assertEquals(exceptionCls, thrownByArrayBased.getClass());
-        Assert.assertEquals(exceptionCls, thrownByReferenceBased.getClass);
+        Assert.assertEquals(exceptionCls, thrownByReferenceBased.getClass());
     }
 
     @Then("our list is $list")
@@ -114,9 +111,9 @@ class CircularListSteps<E> {
     }
 
     @Then("the item return should be $item")
-        public final void itemReturn(E item) {
-            // TODO
-        }
+    public final void itemReturn(E item) {
+        // TODO
+    }
 
     @Then("the integer return should be $value")
     public final void intReturn(int value) {
