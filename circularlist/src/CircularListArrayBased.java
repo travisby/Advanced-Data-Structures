@@ -9,9 +9,6 @@ import java.util.Iterator;
 
 public class CircularListArrayBased<E> implements CircularList<E> {
 
-    public CircularListArrayBased() {
-    }
-
     /**
      * Determines whether a list is empty.
      *

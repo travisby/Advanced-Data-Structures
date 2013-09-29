@@ -8,8 +8,6 @@ import java.util.Iterator;
 @SuppressWarnings({"Annotation", "ClassWithoutLogger", "PublicMethodWithoutLogging", "SuppressionAnnotation", "LocalCanBeFinal"})
 public class CircularListReferenceBased<E> implements CircularList<E> {
 
-    public CircularListReferenceBased() {
-    }
 
     /**
      * Determines whether a list is empty.

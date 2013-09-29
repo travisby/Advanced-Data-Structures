@@ -12,24 +12,19 @@ import org.jbehave.core.annotations.When;
 @SuppressWarnings({"InstanceVariableOfConcreteClass", "SuppressionAnnotation", "UnusedDeclaration", "Annotation", "ClassWithoutLogger", "PublicMethodWithoutLogging", "ClassHasNoToStringMethod", "ClassWithTooManyFields", "UnqualifiedFieldAccess", "LocalCanBeFinal", "AssertEqualsMayBeAssertSame", "MessageMissingOnJUnitAssertion", "UseOfObsoleteAssert", "InstanceVariableNamingConvention", "NonBooleanMethodNameMayNotStartWithQuestion"})
 class CircularListSteps<E> {
 
+    private final int integerReturn = 0;
+    private final boolean booleanReturn = false;
+    private final E itemReturn = null;
     private CircularListArrayBased<E> arrayBased = null;
     private CircularListReferenceBased<E> referenceBased = null;
     private E arrayBasedItem = null;
     private E referenceBasedItem = null;
     private Exception thrownByArrayBased = null;
     private Exception thrownByReferenceBased = null;
-
-    private final int integerReturn = 0;
-    private final boolean booleanReturn = false;
-    private final E itemReturn = null;
     private boolean arrayBasedBooleanReturn = false;
     private boolean referenceBasedBooleanReturn = false;
     private int arrayBasedIntegerReturn = 0;
     private int referenceBasedIntegerReturn = 0;
-
-    CircularListSteps() {
-    }
-
 
     @Given("a circularlist size $size with items $items")
     public void setList(int size, E[] items) {
