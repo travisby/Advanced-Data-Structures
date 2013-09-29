@@ -11,15 +11,15 @@ public interface List<E> {
 
     public boolean add(E item);
 
-    public void add(int index, E item);
+    public void add(int index, E item) throws IndexOutOfBoundsException ;
 
     public void clear();
 
-    public E get(int index);
+    public E get(int index) throws IndexOutOfBoundsException ;
 
     public boolean isEmpty();
 
-    public E remove(int index);
+    public E remove(int index) throws IndexOutOfBoundsException ;
 
     public int size();
 

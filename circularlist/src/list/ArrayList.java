@@ -7,7 +7,7 @@ import java.util.Iterator;
  * Date: 9/29/13
  * Time: 12:08 AM
  */
-public class LinkedList<E> implements List<E> {
+public class ArrayList<E> implements List<E> {
     @Override
     public boolean add(E item) {
         // TODO
@@ -15,7 +15,7 @@ public class LinkedList<E> implements List<E> {
     }
 
     @Override
-    public void add(int index, E item) throws IndexOutOfBoundsException {
+    public void add(int index, E item) throws IndexOutOfBoundsException  {
         // TODO
 
     }
