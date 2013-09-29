@@ -41,7 +41,17 @@ class CircularListSteps<E> {
 
     @When("I add item $item to index $index")
     public final void addItem(E item, int index) {
-        // TODO
+        try {
+            arrayBased.add(index, item);
+        } catch(Exception e) {
+            thrownByArrayBased = e;
+        }
+
+        try {
+            referenceBased.add(index, item);
+        } catch(Exception e) {
+            thrownByReferenceBased = e;
+        }
     }
 
     @When("I remove item $index")
