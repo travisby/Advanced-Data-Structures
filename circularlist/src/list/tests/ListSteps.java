@@ -11,8 +11,12 @@ import org.jbehave.core.annotations.Given;
 import org.jbehave.core.annotations.Then;
 import org.jbehave.core.annotations.When;
 
+@SuppressWarnings({"InstanceVariableOfConcreteClass", "ClassWithTooManyFields", "SuppressionAnnotation", "Annotation", "ClassIndependentOfModule", "ConstantNamingConvention"})
 class ListSteps<E> {
 
+    public static final String I_ASK_IF_IT_IS_AN_EMPTY_LIST = "I ask if it is an empty list";
+    public static final String I_CLEAR_THE_LIST = "I clear the list";
+    public static final String THE_BOOLEAN_RETURN_SHOULD_BE_$TF = "the boolean return should be $tf";
     @SuppressWarnings("FieldMayBeStatic")
     private final int integerReturn = 0;
     @SuppressWarnings("FieldMayBeStatic")
@@ -75,7 +79,7 @@ class ListSteps<E> {
         }
     }
 
-    @When("I ask if it is an empty list")
+    @When(I_ASK_IF_IT_IS_AN_EMPTY_LIST)
     public void setIsEmpty() {
         arrayBasedBooleanReturn = arrayBased.isEmpty();
         referenceBasedBooleanReturn = referenceBased.isEmpty();
@@ -102,7 +106,7 @@ class ListSteps<E> {
         referenceBasedIntegerReturn = referenceBased.size();
     }
 
-    @When("I clear the list")
+    @When(I_CLEAR_THE_LIST)
     public void clear() {
         arrayBased.clear();
         referenceBased.clear();
@@ -114,7 +118,7 @@ class ListSteps<E> {
         Assert.assertEquals(value, referenceBasedItem);
     }
 
-    @SuppressWarnings({"NestedMethodCall"})
+    @SuppressWarnings("NestedMethodCall")
     @Then("throws $exceptionClass")
     public void whenThrew(Class exceptionCls) {
         Assert.assertEquals(exceptionCls, thrownByArrayBased.getClass());
@@ -126,7 +130,7 @@ class ListSteps<E> {
         // TODO
     }
 
-    @Then("the boolean return should be $tf")
+    @Then(THE_BOOLEAN_RETURN_SHOULD_BE_$TF)
     public void boolReturn(boolean tf) {
         Assert.assertTrue(arrayBasedBooleanReturn);
         Assert.assertTrue(referenceBasedBooleanReturn);
