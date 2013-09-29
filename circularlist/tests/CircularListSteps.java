@@ -56,7 +56,17 @@ class CircularListSteps<E> {
 
     @When("I remove item $index")
     public final void removeItem(int index) {
-        // TODO
+        try {
+            arrayBased.remove(index);
+        } catch(Exception e) {
+            thrownByArrayBased = e;
+        }
+
+        try {
+            referenceBased.remove(index);
+        } catch(Exception e) {
+            thrownByReferenceBased = e;
+        }
     }
 
     @Then("it is item $index")
