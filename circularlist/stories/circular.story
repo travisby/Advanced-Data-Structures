@@ -186,10 +186,7 @@ Then throws IndexOutOfBoundsException
 // Then ... ?
 
 // return value when performing on filled
-Scenario: Adding an item to a filled list should return true
-Given a circularlist size 4 with items [ 1, 2, 3, 4]
-When I add item 0 to index 0
-Then the boolean return should be true
+// void
 
 // state change on empty
 Scenario: Adding an item to an empty list should make the list have only our element
@@ -204,32 +201,19 @@ When I add item 5 to index 5
 Then our list is [0, 1, 2, 3, 4, 5]
 
 // return value on index = 0
-Scenario: Adding an item to the beginning of the list should return True
-Given a circularlist size 5 with items [1, 2, 3, 4, 5]
-When I add item 0 to index 0
-Then the boolean return should be true
+// void
 
 // return value on 0 < index < size - 1
-Scenario: Adding an item to the middle of the list should return true
-Given a circularlist size 5 with items [0, 1, 2, 3, 5]
-When I add item 4 to index 4
-Then the boolean return should be true
+// void
 
 // return value on index = size - 1
-Scenario: Addng an item to the end of our list should return true
-Given a circularlist size 5 with items [0, 1, 2, 3, 4]
-When I add item 5 to index 5
-Then the boolean return should be true
+// void
 
 // return value on index = size
-Scenario: Addng an item to the end+1 of our list should return true
-Given a circularlist size 5 with items [1, 2, 3, 4, 5]
-Then the boolean return should be true
+// void
 
 // return value on index = 2 * size + 1
-Scenario: Adding an item should return trues while looping multiple times
-Given a circularlist size 5 with items [1, 2, 3, 4, 5]
-When I add item 0 to index 11
+// void
 
 // state change value on index = 0
 Scenario: Adding an item to the beginning of the list shifts all elements
@@ -261,23 +245,23 @@ Given a circularlist size 5 with items [1, 2, 3, 4, 5]
 When I add item 0 to index 11
 Then our list is [0, 1, 2, 3, 4, 5]
 
- // return value when index = -1 with empty list
+// return value when index = -1 with empty list
+// void
+
+// return value when index = -1 with full list
+// void
+
+// state change when index = -1 with empty list
 Scenario: IndexOutOfBoundsException gets thrown when adding to a negative index on an empty list
 Given a circularlist size 0 with items []
 When I add item -1 to index -1
 Then throws IndexOutOfBoundsException
 
- // return value when index = -1 with full list
+// state change when index = -1 with full list
 Scenario: IndexOutOfBoundsException gets thrown when adding to a negative index on a filled list
 Given a circularlist size 10 with items [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
 When I add item -1 to index -1
 Then throws IndexOutOfBoundsException
-
-// state change when index = -1 with empty list
-// See Scenario: IndexOutOfBoundsException gets thrown when adding to a negative index on an empty list
-
-// state change when index = -1 with full list
-// See Scenario: IndexOutOfBoundsException gets thrown when adding to a negative index on a filled list
 
 
 

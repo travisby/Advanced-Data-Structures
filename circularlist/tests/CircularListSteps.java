@@ -9,7 +9,7 @@ import org.jbehave.core.annotations.Given;
 import org.jbehave.core.annotations.Then;
 import org.jbehave.core.annotations.When;
 
-@SuppressWarnings({"InstanceVariableOfConcreteClass", "SuppressionAnnotation", "UnusedDeclaration", "Annotation", "ClassWithoutLogger", "PublicMethodWithoutLogging", "ClassHasNoToStringMethod"})
+@SuppressWarnings({"InstanceVariableOfConcreteClass", "SuppressionAnnotation", "UnusedDeclaration", "Annotation", "ClassWithoutLogger", "PublicMethodWithoutLogging", "ClassHasNoToStringMethod", "ClassWithTooManyFields"})
 class CircularListSteps<E> {
 
     private CircularListArrayBased<E> arrayBased = null;
@@ -18,6 +18,15 @@ class CircularListSteps<E> {
     private E referenceBasedItem = null;
     private Exception thrownByArrayBased = null;
     private Exception thrownByReferenceBased = null;
+
+    private int integerReturn = 0;
+    private boolean booleanReturn = false;
+    private E itemReturn = null;
+    private boolean arrayBasedBooleanReturn = false;
+    private boolean referenceBasedBooleanReturn = false;
+    private int arrayBasedIntegerReturn = 0;
+    private int referenceBasedIntegerReturn = 0;
+
 
     CircularListSteps() {
     }
@@ -56,13 +65,13 @@ class CircularListSteps<E> {
     @When("I remove item $index")
     public final void removeItem(int index) {
         try {
-            arrayBased.remove(index);
+            arrayBasedItem = arrayBased.remove(index);
         } catch (Exception e) {
             thrownByArrayBased = e;
         }
 
         try {
-            referenceBased.remove(index);
+            arrayBasedItem = referenceBased.remove(index);
         } catch (Exception e) {
             thrownByReferenceBased = e;
         }
@@ -70,22 +79,35 @@ class CircularListSteps<E> {
 
     @When("I ask if it is an empty list")
     public final void setIsEmpty() {
-        // TODO
+        arrayBasedBooleanReturn = arrayBased.isEmpty();
+        referenceBasedBooleanReturn = referenceBased.isEmpty();
     }
 
     @When("I add item $item to the end of the list")
     public final void addItemToEnd(E item) {
-        // TODO
+        try {
+            arrayBasedBooleanReturn = arrayBased.add(item);
+        } catch(Exception e) {
+            thrownByArrayBased = e;
+        }
+
+        try {
+            referenceBasedBooleanReturn = referenceBased.add(item);
+        } catch(Exception e) {
+            thrownByReferenceBased = e;
+        }
     }
 
     @When("I ask for the size")
     public final void setSize() {
-        // TODO
+        arrayBasedIntegerReturn = arrayBased.size();
+        referenceBasedIntegerReturn = referenceBased.size();
     }
 
     @When("I clear the list")
     public final void clear() {
-        // TODO
+        arrayBased.clear();
+        referenceBased.clear();
     }
 
     @Then("it is item $value")
@@ -107,22 +129,26 @@ class CircularListSteps<E> {
 
     @Then("the boolean return should be $tf")
     public final void boolReturn(boolean tf) {
-        // TODO
+        Assert.assertTrue(arrayBasedBooleanReturn);
+        Assert.assertTrue(referenceBasedBooleanReturn);
     }
 
     @Then("the item return should be $item")
     public final void itemReturn(E item) {
-        // TODO
+        Assert.assertEquals(item, arrayBasedItem);
+        Assert.assertEquals(item, referenceBasedItem);
     }
 
     @Then("the integer return should be $value")
     public final void intReturn(int value) {
-        // TODO
+        Assert.assertEquals(value, arrayBasedIntegerReturn);
+        Assert.assertEquals(value, referenceBasedIntegerReturn);
     }
 
     @Then("the size should be $size")
     public final void isSize(int size) {
-        // TODO
+        Assert.assertEquals(size, arrayBasedIntegerReturn);
+        Assert.assertEquals(size, referenceBasedIntegerReturn);
     }
 
 }
