@@ -119,13 +119,13 @@ Then our list is 0,1,2,3,4,5
  !-- return value when index = -1 with empty list
 Scenario: IndexOutOfBoundsException gets thrown when adding to a negative index on an empty list
 Given an empty list
-When I add item -1 to the end of the list
+When I add item -1 to index -1
 Then throws IndexOutOfBoundsException
 
  !-- return value when index = -1 with full list
 Scenario: IndexOutOfBoundsException gets thrown when adding to a negative index on a filled list
 Given a list size 10 with items 0,1,2,3,4,5,6,7,8,9
-When I add item -1 to the end of the list
+When I add item -1 to index -1
 Then throws IndexOutOfBoundsException
 
 
