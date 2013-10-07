@@ -5,42 +5,42 @@ package list;
  */
 class Node<E> {
 
-    Node next;
     E data;
+    Node next;
 
     Node() {
-        // TODO
+        next = null;
+        data = null;
     }
 
-    Node(E data) {
-        // TODO
+    Node(E newData) {
+        next = null;
+        data = newData;
     }
 
-    Node(Node next) {
-        // TODO
+    Node(Node newNext) {
+        next = newNext;
+        data = null;
     }
 
-    Node(E data, Node next) {
-        // TODO
+    Node(E newData, Node newNext) {
+        next = newNext;
+        data = newData;
     }
 
-    Node getNext() {
-        // TODO
-        return null;
+    public E getData() {
+        return data;
     }
 
-    void setNext(Node newNext) {
-        // TODO
+    public void setData(E data) {
+        this.data = data;
     }
 
-    void setData(E newData) {
-        // TODO
+    public Node getNext() {
+        return next;
     }
 
-    E getData() {
-        // TODO
-        return null;
+    public void setNext(Node next) {
+        this.next = next;
     }
-
-
 }
