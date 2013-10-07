@@ -6,7 +6,6 @@ package list.tests; /**
 
 import junit.framework.Assert;
 import list.ArrayList;
-import list.LinkedList;
 import org.jbehave.core.annotations.AsParameterConverter;
 import org.jbehave.core.annotations.Given;
 import org.jbehave.core.annotations.Then;
@@ -17,21 +16,21 @@ import java.util.List;
 @SuppressWarnings({"InstanceVariableOfConcreteClass", "ClassWithTooManyFields", "SuppressionAnnotation", "Annotation", "ClassIndependentOfModule", "ConstantNamingConvention"})
 public class ListSteps {
 
-    @SuppressWarnings("FieldMayBeStatic")
-    private final int integerReturn = 0;
-    @SuppressWarnings("FieldMayBeStatic")
-    private final boolean booleanReturn = false;
-    private final int itemReturn = 0;
-    private ArrayList<Integer> arrayBased = null;
-    private LinkedList<Integer> referenceBased = null;
-    private int arrayBasedItem = 0;
-    private int referenceBasedItem = 0;
-    private Exception thrownByArrayBased = null;
-    private Exception thrownByReferenceBased = null;
-    private boolean arrayBasedBooleanReturn = false;
-    private boolean referenceBasedBooleanReturn = false;
-    private int arrayBasedintReturn = 0;
-    private int referenceBasedintReturn = 0;
+    private int integerReturn;
+    private boolean booleanReturn;
+    private int itemReturn;
+    private ArrayList<Integer> arrayBased;
+    // private LinkedList<Integer> referenceBased = null;
+    private ArrayList<Integer> referenceBased;
+
+    private int arrayBasedItem;
+    private int referenceBasedItem;
+    private Exception thrownByArrayBased;
+    private Exception thrownByReferenceBased;
+    private boolean arrayBasedBooleanReturn;
+    private boolean referenceBasedBooleanReturn;
+    private int arrayBasedintReturn;
+    private int referenceBasedintReturn;
 
     @AsParameterConverter
     public boolean toBool(String s) {
@@ -44,14 +43,16 @@ public class ListSteps {
     @Given("an empty list")
     public void setListEmpty() {
         arrayBased = new ArrayList<Integer>();
-        referenceBased = new LinkedList<Integer>();
+        // referenceBased = new LinkedList<Integer>();
+        referenceBased = new ArrayList<Integer>();
 
     }
 
     @Given("a list size $size with items $items")
     public void setList(int size, List<Integer> items) {
         arrayBased = new ArrayList<Integer>();
-        referenceBased = new LinkedList<Integer>();
+        // referenceBased = new LinkedList<Integer>();
+        referenceBased = new ArrayList<Integer>();
         for (int i = 0; i < size; i++) {
             arrayBased.add(i, items.get(i));
             referenceBased.add(i, items.get(i));
@@ -61,8 +62,17 @@ public class ListSteps {
 
     @When("I get item $index")
     public void getItem(int index) {
-        arrayBasedItem = arrayBased.get(index);
-        referenceBasedItem = referenceBased.get(index);
+        try {
+            arrayBasedItem = arrayBased.get(index);
+        } catch (IndexOutOfBoundsException e) {
+            thrownByArrayBased = e;
+        }
+
+        try {
+            referenceBasedItem = referenceBased.get(index);
+        } catch (IndexOutOfBoundsException e) {
+            thrownByReferenceBased = e;
+        }
     }
 
     @When("I add item $item to index $index")
@@ -132,6 +142,10 @@ public class ListSteps {
     public void isEqualToItemAtIndex(int value) {
         Assert.assertEquals(value, arrayBasedItem);
         Assert.assertEquals(value, referenceBasedItem);
+
+        // manually reset...
+        arrayBasedItem = -1;
+        referenceBasedItem = -1;
     }
 
     @SuppressWarnings("NestedMethodCall")
@@ -139,6 +153,10 @@ public class ListSteps {
     public void whenThrew() {
         Assert.assertEquals(IndexOutOfBoundsException.class, thrownByArrayBased.getClass());
         Assert.assertEquals(IndexOutOfBoundsException.class, thrownByReferenceBased.getClass());
+
+        // manually reset them since the runner classes don't seem to...
+        thrownByArrayBased = null;
+        thrownByReferenceBased = null;
     }
 
     // Don't ask why!
@@ -161,30 +179,55 @@ public class ListSteps {
     public void boolReturn(boolean tf) {
         Assert.assertTrue(arrayBasedBooleanReturn);
         Assert.assertTrue(referenceBasedBooleanReturn);
+
+        // reset...
+        arrayBasedBooleanReturn = false;
+        referenceBasedBooleanReturn = false;
     }
 
     @Then("the item return should be $item")
     public void itemReturn(int item) {
+
+        if (thrownByArrayBased != null || thrownByReferenceBased != null) {
+            System.out.println("Yo bro this failed");
+        }
+
         Assert.assertEquals(item, arrayBasedItem);
         Assert.assertEquals(item, referenceBasedItem);
+
+        // reset...
+        arrayBasedItem = -1;
+        referenceBasedItem = -1;
     }
 
     @Then("the integer return should be $value")
     public void intReturn(int value) {
         Assert.assertEquals(value, arrayBasedintReturn);
         Assert.assertEquals(value, referenceBasedintReturn);
+
+        // reset...
+        arrayBasedintReturn = -1;
+        referenceBasedintReturn = -1;
     }
 
     @Then("the size should be $size")
     public void isSize(int size) {
         Assert.assertEquals(size, arrayBasedintReturn);
         Assert.assertEquals(size, referenceBasedintReturn);
+
+        // reset...
+        arrayBasedintReturn = -1;
+        referenceBasedintReturn = -1;
     }
 
     @Then("the boolean return should be $bool")
     public void boolResult(boolean bool) {
         Assert.assertEquals(bool, arrayBasedBooleanReturn);
         Assert.assertEquals(bool, referenceBasedBooleanReturn);
+
+        // reset...
+        arrayBasedBooleanReturn = false;
+        referenceBasedBooleanReturn = false;
     }
 
 }

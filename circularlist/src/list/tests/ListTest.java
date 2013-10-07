@@ -23,7 +23,13 @@ public class ListTest extends JUnitStory {
         return new MostUsefulConfiguration()
                 .useStoryReporterBuilder(new StoryReporterBuilder().withDefaultFormats())
                 .usePendingStepStrategy(new FailingUponPendingStep())
-                .useStoryControls(new StoryControls().doSkipScenariosAfterFailure(true))
+                .useStoryControls(
+                        new StoryControls()
+                                .doSkipScenariosAfterFailure(true)
+                                .doResetStateBeforeScenario(true)
+                                .doResetStateBeforeStory(true)
+                                .doSkipBeforeAndAfterScenarioStepsIfGivenStory(true)
+                )
                 ;
     }
 
