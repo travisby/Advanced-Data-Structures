@@ -20,31 +20,23 @@ public class LinkedList<E> implements List<E> {
 
     @Override
     public boolean add(E item) {
-        last.setData(item);
-        last.setNext(new Node());
-        last = last.getNext();
+        add(size(), item);
         return true;
     }
 
     @Override
     public void add(int index, E item) throws IndexOutOfBoundsException {
 
-        if (index < 0 || index >= size()) {
+        if (index < 0 || index > size()) {
             throw new IndexOutOfBoundsException();
         }
-        if (index == size() - 1) {
-            // ensures last() gets updated
-            add(item);
-        } else {
-            // Set the previous Node's next to a new Node with data = item and next = previous node's old next
-            getNode(index - 1).setNext(new Node(item, getNode(index - 1).getNext()));
-        }
+        // Set the previous Node's next to a new Node with data = item and next = previous node's old next
+        getNode(index - 1).setNext(new Node(item, getNode(index - 1).getNext()));
     }
 
     @Override
     public void clear() {
         head = new Node<E>();
-        last = head;
     }
 
     @Override
