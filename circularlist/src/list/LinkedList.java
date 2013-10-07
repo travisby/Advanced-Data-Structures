@@ -8,6 +8,12 @@ import java.util.Iterator;
  * Time: 12:08 AM
  */
 public class LinkedList<E> implements List<E> {
+    private Node<E> head;
+
+    public LinkedList() {
+        head = new Node<E>();
+    }
+
     @Override
     public boolean add(E item) {
         // TODO
