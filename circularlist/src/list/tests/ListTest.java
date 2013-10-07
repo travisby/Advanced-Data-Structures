@@ -3,6 +3,7 @@ package list.tests;
 import de.codecentric.jbehave.junit.monitoring.JUnitReportingRunner;
 import org.jbehave.core.configuration.Configuration;
 import org.jbehave.core.configuration.MostUsefulConfiguration;
+import org.jbehave.core.embedder.StoryControls;
 import org.jbehave.core.failures.FailingUponPendingStep;
 import org.jbehave.core.junit.JUnitStory;
 import org.jbehave.core.reporters.StoryReporterBuilder;
@@ -22,6 +23,7 @@ public class ListTest extends JUnitStory {
         return new MostUsefulConfiguration()
                 .useStoryReporterBuilder(new StoryReporterBuilder().withDefaultFormats())
                 .usePendingStepStrategy(new FailingUponPendingStep())
+                .useStoryControls(new StoryControls().doSkipScenariosAfterFailure(true))
                 ;
     }
 
