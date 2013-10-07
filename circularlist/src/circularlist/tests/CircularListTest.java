@@ -1,3 +1,5 @@
+package circularlist.tests;
+
 import de.codecentric.jbehave.junit.monitoring.JUnitReportingRunner;
 import list.tests.ListSteps;
 import org.jbehave.core.configuration.Configuration;

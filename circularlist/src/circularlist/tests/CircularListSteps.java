@@ -1,3 +1,4 @@
+package circularlist.tests;
 /**
  * User: Travis Beatty
  * Date: 9/28/13
@@ -11,7 +12,7 @@ import org.jbehave.core.annotations.Given;
 import java.util.List;
 
 @SuppressWarnings({"InstanceVariableOfConcreteClass", "SuppressionAnnotation", "UnusedDeclaration", "Annotation", "ClassWithoutLogger", "PublicMethodWithoutLogging", "ClassHasNoToStringMethod", "ClassWithTooManyFields", "UnqualifiedFieldAccess", "LocalCanBeFinal", "AssertEqualsMayBeAssertSame", "MessageMissingOnJUnitAssertion", "UseOfObsoleteAssert", "InstanceVariableNamingConvention", "NonBooleanMethodNameMayNotStartWithQuestion"})
-class CircularListSteps {
+public class CircularListSteps {
 
     @SuppressWarnings("FieldMayBeStatic")
     private final int integerReturn = 0;
