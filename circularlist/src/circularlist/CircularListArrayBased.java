@@ -1,26 +1,46 @@
+package circularlist;
+
 import java.util.Iterator;
 
-@SuppressWarnings({"ALL", "UnusedDeclaration"})
-public interface CircularList<E> extends Iterable<E> {
+/**
+ * User: Travis Beatty
+ * Date: 9/28/13
+ * Time: 6:51 PM
+ */
+@SuppressWarnings({"Annotation", "ClassWithoutLogger", "PublicMethodWithoutLogging", "SuppressionAnnotation", "LocalCanBeFinal", "PublicConstructor"})
+
+public class CircularListArrayBased<E> implements CircularList<E> {
 
     /**
      * Determines whether a list is empty.
      *
      * @return true if the list is empty, otherwise false
      */
-    public boolean isEmpty();
+    @Override
+    public boolean isEmpty() {
+        // TODO
+        return false;
+    }
 
     /**
      * Determines the length of a list.
      *
      * @return the number of elements in the list without wrapping
      */
-    public int size();
+    @Override
+    public int size() {
+        // TODO
+        return 0;
+    }
 
     /**
      * Removes all elements from the list.
      */
-    public void clear();
+    @Override
+    public void clear() {
+        // TODO
+
+    }
 
     /**
      * Adds a new item to the end of the list.
@@ -28,7 +48,11 @@ public interface CircularList<E> extends Iterable<E> {
      * @param item the new item to add
      * @return true if the list was modified
      */
-    public boolean add(E item);
+    @Override
+    public boolean add(E item) {
+        // TODO
+        return false;
+    }
 
     /**
      * Adds a new item to the list at position index.
@@ -38,7 +62,11 @@ public interface CircularList<E> extends Iterable<E> {
      * @param item  the new item to add
      * @throws IndexOutOfBoundsException if index is negative
      */
-    public void add(int index, E item) throws IndexOutOfBoundsException;
+    @Override
+    public void add(int index, E item) throws IndexOutOfBoundsException {
+        // TODO
+
+    }
 
     /**
      * Remove and return the item at the given index.
@@ -47,7 +75,11 @@ public interface CircularList<E> extends Iterable<E> {
      * @return the item that was removed
      * @throws IndexOutOfBoundsException if index is negative
      */
-    public E remove(int index) throws IndexOutOfBoundsException;
+    @Override
+    public E remove(int index) throws IndexOutOfBoundsException {
+        // TODO
+        return null;
+    }
 
     /**
      * Retrieve the item at the given index without altering the list.
@@ -56,12 +88,20 @@ public interface CircularList<E> extends Iterable<E> {
      * @return the item at position index
      * @throws IndexOutOfBoundsException if index is negative
      */
-    public E get(int index) throws IndexOutOfBoundsException;
+    @Override
+    public E get(int index) throws IndexOutOfBoundsException {
+        // TODO
+        return null;
+    }
 
     /**
      * Generate an iterator for the list.  The iterator should
      * visit the items in a circular pattern.  As long as the
      * list is not empty, it should never stop.
      */
-    public Iterator<E> iterator();
+    @Override
+    public Iterator<E> iterator() {
+        // TODO
+        return null;
+    }
 }

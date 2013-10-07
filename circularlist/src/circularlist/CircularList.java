@@ -1,44 +1,28 @@
+package circularlist;
+
 import java.util.Iterator;
 
-/**
- * User: Travis Beatty
- * Date: 9/28/13
- * Time: 6:51 PM
- */
-@SuppressWarnings({"Annotation", "ClassWithoutLogger", "PublicMethodWithoutLogging", "SuppressionAnnotation", "LocalCanBeFinal", "PublicConstructor"})
-
-public class CircularListArrayBased<E> implements CircularList<E> {
+@SuppressWarnings({"ALL", "UnusedDeclaration"})
+public interface CircularList<E> extends Iterable<E> {
 
     /**
      * Determines whether a list is empty.
      *
      * @return true if the list is empty, otherwise false
      */
-    @Override
-    public boolean isEmpty() {
-        // TODO
-        return false;
-    }
+    public boolean isEmpty();
 
     /**
      * Determines the length of a list.
      *
      * @return the number of elements in the list without wrapping
      */
-    @Override
-    public int size() {
-        // TODO
-        return 0;
-    }
+    public int size();
 
     /**
      * Removes all elements from the list.
      */
-    @Override
-    public void clear() {
-        // TODO
-
-    }
+    public void clear();
 
     /**
      * Adds a new item to the end of the list.
@@ -46,11 +30,7 @@ public class CircularListArrayBased<E> implements CircularList<E> {
      * @param item the new item to add
      * @return true if the list was modified
      */
-    @Override
-    public boolean add(E item) {
-        // TODO
-        return false;
-    }
+    public boolean add(E item);
 
     /**
      * Adds a new item to the list at position index.
@@ -60,11 +40,7 @@ public class CircularListArrayBased<E> implements CircularList<E> {
      * @param item  the new item to add
      * @throws IndexOutOfBoundsException if index is negative
      */
-    @Override
-    public void add(int index, E item) throws IndexOutOfBoundsException {
-        // TODO
-
-    }
+    public void add(int index, E item) throws IndexOutOfBoundsException;
 
     /**
      * Remove and return the item at the given index.
@@ -73,11 +49,7 @@ public class CircularListArrayBased<E> implements CircularList<E> {
      * @return the item that was removed
      * @throws IndexOutOfBoundsException if index is negative
      */
-    @Override
-    public E remove(int index) throws IndexOutOfBoundsException {
-        // TODO
-        return null;
-    }
+    public E remove(int index) throws IndexOutOfBoundsException;
 
     /**
      * Retrieve the item at the given index without altering the list.
@@ -86,20 +58,12 @@ public class CircularListArrayBased<E> implements CircularList<E> {
      * @return the item at position index
      * @throws IndexOutOfBoundsException if index is negative
      */
-    @Override
-    public E get(int index) throws IndexOutOfBoundsException {
-        // TODO
-        return null;
-    }
+    public E get(int index) throws IndexOutOfBoundsException;
 
     /**
      * Generate an iterator for the list.  The iterator should
      * visit the items in a circular pattern.  As long as the
      * list is not empty, it should never stop.
      */
-    @Override
-    public Iterator<E> iterator() {
-        // TODO
-        return null;
-    }
+    public Iterator<E> iterator();
 }

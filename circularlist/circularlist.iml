@@ -8,7 +8,7 @@
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
-    <orderEntry type="library" name="jbehave" level="application" />
+    <orderEntry type="library" exported="" name="de.codecentric:jbehave-junit-runner:1.0.2" level="project" />
   </component>
 </module>
 

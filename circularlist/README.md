@@ -12,11 +12,11 @@ SPECIFICATIONS
 In this assignment you will create two implementations of a circular list. A circular list wraps
 around when an index greater or equal to the size is requested. E.g., if the list contains 5 elements
 and index 7 is requested, then the element at index 2 is returned.
-Included with the assignment is the ﬁle CircularList.java. This is an interface for a circular
+Included with the assignment is the ﬁle circularlist.CircularList.java. This is an interface for a circular
 list. You are to create two implementations for this interface. The ﬁrst implementation should be
 saved as CircularListArrayBased.java and should be array based. You must use an array as
 your core data structure for this implementation. You may not use java.util.ArrayList or another collection from the JCF.
-The second implementation should be saved as CircularListReferenceBased.java and
+The second implementation should be saved as circularlist.CircularListReferenceBased.java and
 should be reference (linked list) based. This implementation must use a linked list with a node class
 that you deﬁne. You may not use java.util.LinkedList or another collection from the JCF.
 For both implementations, you must implement all methods in the interface. You must throw the
@@ -48,9 +48,9 @@ SUBMISSION
 =========
 All the classes you create must be in the package circularlist. Submit a zip ﬁle named
 circularlist.zip, which has at the root level a directory named circularlist containing the
-ﬁles CircularListArrayBased.java and CircularListReferenceBased.java, as well as
+ﬁles CircularListArrayBased.java and circularlist.CircularListReferenceBased.java, as well as
 your iterator classes and any other classes you create for the assignment. Do not submit the ﬁle
-CircularList.java. Do not submit any .class ﬁles or any other ﬁles. Points will be deducted
+circularlist.CircularList.java. Do not submit any .class ﬁles or any other ﬁles. Points will be deducted
 for incorrectly named ﬁles/directories or erroneous ﬁles
 
 
