@@ -1,5 +1,7 @@
 package circularlist;
 
+import list.ArrayList;
+
 import java.util.Iterator;
 
 /**
@@ -9,7 +11,12 @@ import java.util.Iterator;
  */
 @SuppressWarnings({"Annotation", "ClassWithoutLogger", "PublicMethodWithoutLogging", "SuppressionAnnotation", "LocalCanBeFinal", "PublicConstructor"})
 
-public class CircularListArrayBased<E> implements CircularList<E> {
+public class CircularListArrayBased<E> extends AbstractCircularList<E> {
+
+    public CircularListArrayBased() {
+
+        new ArrayList<E>();
+    }
 
     /**
      * Determines whether a list is empty.
