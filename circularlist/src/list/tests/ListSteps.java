@@ -4,12 +4,13 @@ package list.tests; /**
  * Time: 5:59 PM
  */
 
-import junit.framework.Assert;
 import list.ArrayList;
+import list.LinkedList;
 import org.jbehave.core.annotations.AsParameterConverter;
 import org.jbehave.core.annotations.Given;
 import org.jbehave.core.annotations.Then;
 import org.jbehave.core.annotations.When;
+import org.junit.Assert;
 
 import java.util.List;
 
@@ -21,7 +22,7 @@ public class ListSteps {
     private int itemReturn;
     private ArrayList<Integer> arrayBased;
     // private LinkedList<Integer> referenceBased = null;
-    private ArrayList<Integer> referenceBased;
+    private LinkedList<Integer> referenceBased;
 
     private int arrayBasedItem;
     private int referenceBasedItem;
@@ -44,7 +45,7 @@ public class ListSteps {
     public void setListEmpty() {
         arrayBased = new ArrayList<Integer>();
         // referenceBased = new LinkedList<Integer>();
-        referenceBased = new ArrayList<Integer>();
+        referenceBased = new LinkedList<Integer>();
 
     }
 
@@ -52,7 +53,7 @@ public class ListSteps {
     public void setList(int size, List<Integer> items) {
         arrayBased = new ArrayList<Integer>();
         // referenceBased = new LinkedList<Integer>();
-        referenceBased = new ArrayList<Integer>();
+        referenceBased = new LinkedList<Integer>();
         for (int i = 0; i < size; i++) {
             arrayBased.add(i, items.get(i));
             referenceBased.add(i, items.get(i));
@@ -99,7 +100,7 @@ public class ListSteps {
         }
 
         try {
-            arrayBasedItem = referenceBased.remove(index);
+            referenceBasedItem = referenceBased.remove(index);
         } catch (IndexOutOfBoundsException e) {
             thrownByReferenceBased = e;
         }
@@ -136,6 +137,9 @@ public class ListSteps {
     public void clear() {
         arrayBased.clear();
         referenceBased.clear();
+
+        arrayBasedIntReturn = arrayBased.size();
+        referenceBasedIntReturn = referenceBased.size();
     }
 
     @Then("it is item $value")
@@ -177,8 +181,8 @@ public class ListSteps {
 
     @Then("the boolean return should be $tf")
     public void boolReturn(boolean tf) {
-        Assert.assertTrue(arrayBasedBooleanReturn);
-        Assert.assertTrue(referenceBasedBooleanReturn);
+        Assert.assertTrue(tf == arrayBasedBooleanReturn);
+        Assert.assertTrue(tf == referenceBasedBooleanReturn);
 
         // reset...
         arrayBasedBooleanReturn = false;
@@ -187,11 +191,6 @@ public class ListSteps {
 
     @Then("the item return should be $item")
     public void itemReturn(int item) {
-
-        if (thrownByArrayBased != null || thrownByReferenceBased != null) {
-            System.out.println("Yo bro this failed");
-        }
-
         Assert.assertEquals(item, arrayBasedItem);
         Assert.assertEquals(item, referenceBasedItem);
 

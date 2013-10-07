@@ -21,14 +21,19 @@ public class ListTest extends JUnitStory {
     @Override
     public Configuration configuration() {
         return new MostUsefulConfiguration()
-                .useStoryReporterBuilder(new StoryReporterBuilder().withDefaultFormats())
+                .useStoryReporterBuilder(
+                        new StoryReporterBuilder()
+                                .withDefaultFormats()
+                                .withFailureTrace(true)
+                                .withMultiThreading(false)
+                )
                 .usePendingStepStrategy(new FailingUponPendingStep())
                 .useStoryControls(
                         new StoryControls()
-                                .doSkipScenariosAfterFailure(true)
+                                .doSkipScenariosAfterFailure(false)
                                 .doResetStateBeforeScenario(true)
                                 .doResetStateBeforeStory(true)
-                                .doSkipBeforeAndAfterScenarioStepsIfGivenStory(true)
+                                .doSkipBeforeAndAfterScenarioStepsIfGivenStory(false)
                 )
                 ;
     }

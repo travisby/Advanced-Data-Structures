@@ -220,8 +220,6 @@ Given an empty list
 When I remove item 0
 Then throws IndexOutOfBoundsException
 
-!-- TODO Scenario Removing an element from an empty list should... ?
-
 !-- return value when performing on filled
 Scenario: Removing an element from the beginning of the list should return that item
 Given a list size 5 with items 0,1,2,3,4
@@ -332,7 +330,7 @@ Then our list is 0
 Scenario: isEmpty() should return False on 10 item list
 Given a list size 1 with items 0,1,2,3,4,5,6,7,8,9,10
 When I ask if it is an empty list
-Then the boolean return should be False
+Then the boolean return should be false
 
 
 !-- size()
