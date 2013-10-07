@@ -30,7 +30,7 @@ public class ListTest extends JUnitStory {
                 .usePendingStepStrategy(new FailingUponPendingStep())
                 .useStoryControls(
                         new StoryControls()
-                                .doSkipScenariosAfterFailure(false)
+                                .doSkipScenariosAfterFailure(true)
                                 .doResetStateBeforeScenario(true)
                                 .doResetStateBeforeStory(true)
                                 .doSkipBeforeAndAfterScenarioStepsIfGivenStory(false)
