@@ -18,12 +18,12 @@ class Node<E> {
         data = newData;
     }
 
-    Node(Node newNext) {
+    Node(Node<E> newNext) {
         next = newNext;
         data = null;
     }
 
-    Node(E newData, Node newNext) {
+    Node(E newData, Node<E> newNext) {
         next = newNext;
         data = newData;
     }
@@ -36,11 +36,11 @@ class Node<E> {
         this.data = data;
     }
 
-    public Node getNext() {
+    public Node<E> getNext() {
         return next;
     }
 
-    public void setNext(Node next) {
+    public void setNext(Node<E> next) {
         this.next = next;
     }
 }
