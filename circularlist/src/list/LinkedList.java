@@ -26,12 +26,20 @@ public class LinkedList<E> implements List<E> {
 
     @Override
     public void add(int index, E item) throws IndexOutOfBoundsException {
+        Node<E> parentNode;
 
         if (index < 0 || index > size()) {
             throw new IndexOutOfBoundsException();
         }
-        // Set the previous Node's next to a new Node with data = item and next = previous node's old next
-        getNode(index - 1).setNext(new Node(item, getNode(index - 1).getNext()));
+
+        if (index == 0) {
+            head.setData(item);
+            head.setNext(new Node<E>());
+        } else {
+            // Set the previous Node's next to a new Node with data = item and next = previous node's old next
+            parentNode = getNode(index - 1);
+            parentNode.setNext(new Node(item, parentNode.getNext()));
+        }
     }
 
     @Override
@@ -41,6 +49,13 @@ public class LinkedList<E> implements List<E> {
 
     @Override
     public E get(int index) throws IndexOutOfBoundsException {
+        if (index < 0 || index >= size()) {
+            throw new IndexOutOfBoundsException();
+        }
+
+        System.out.println(size());
+        System.out.println(index);
+
         return getNode(index).getData();
     }
 
@@ -51,8 +66,24 @@ public class LinkedList<E> implements List<E> {
 
     @Override
     public E remove(int index) throws IndexOutOfBoundsException {
-        // TODO
-        return null;
+        Node<E> removedNodeParent;
+        E dataOfRemovedNode;
+
+        if (index < 0 || index >= size()) {
+            throw new IndexOutOfBoundsException();
+        }
+
+        if (index == 0) {
+            dataOfRemovedNode = head.getData();
+            head = head.getNext();
+        } else {
+            removedNodeParent = getNode(index - 1);
+            dataOfRemovedNode = removedNodeParent.getNext().getData();
+            removedNodeParent.setNext(removedNodeParent.getNext().getNext());
+        }
+
+        return dataOfRemovedNode;
+
     }
 
     @Override
