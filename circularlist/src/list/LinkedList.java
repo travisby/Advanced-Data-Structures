@@ -29,10 +29,10 @@ public class LinkedList<E> implements List<E> {
     @Override
     public void add(int index, E item) throws IndexOutOfBoundsException {
 
-        if (index < 0 || index > size()) {
+        if (index < 0 || index >= size()) {
             throw new IndexOutOfBoundsException();
         }
-        if (index == size()) {
+        if (index == size() - 1) {
             // ensures last() gets updated
             add(item);
         } else {
@@ -54,8 +54,7 @@ public class LinkedList<E> implements List<E> {
 
     @Override
     public boolean isEmpty() {
-        // TODO
-        return false;
+        return head.getNext() == null;
     }
 
     @Override
@@ -66,8 +65,14 @@ public class LinkedList<E> implements List<E> {
 
     @Override
     public int size() {
-        // TODO
-        return 0;
+        int counter;
+        Node<E> pointer = head;
+
+        for (counter = 0; pointer.getNext() != null; counter++) {
+            pointer = pointer.getNext();
+        }
+
+        return counter;
     }
 
     @Override
