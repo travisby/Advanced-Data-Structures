@@ -49,8 +49,7 @@ public class LinkedList<E> implements List<E> {
 
     @Override
     public E get(int index) throws IndexOutOfBoundsException {
-        // TODO
-        return null;
+        return getNode(index).getData();
     }
 
     @Override
@@ -77,8 +76,11 @@ public class LinkedList<E> implements List<E> {
         return null;
     }
 
-    private Node getNode(int index) {
-        // TODO
-        return null;
+    private Node<E> getNode(int index) {
+        Node<E> pointer = head;
+        for (int i = index; i > 0; i--) {
+            pointer = pointer.getNext();
+        }
+        return pointer;
     }
 }
