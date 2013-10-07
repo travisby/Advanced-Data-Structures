@@ -29,8 +29,8 @@ public class ListSteps {
     private Exception thrownByReferenceBased;
     private boolean arrayBasedBooleanReturn;
     private boolean referenceBasedBooleanReturn;
-    private int arrayBasedintReturn;
-    private int referenceBasedintReturn;
+    private int arrayBasedIntReturn;
+    private int referenceBasedIntReturn;
 
     @AsParameterConverter
     public boolean toBool(String s) {
@@ -128,8 +128,8 @@ public class ListSteps {
 
     @When("I ask for the size")
     public void setSize() {
-        arrayBasedintReturn = arrayBased.size();
-        referenceBasedintReturn = referenceBased.size();
+        arrayBasedIntReturn = arrayBased.size();
+        referenceBasedIntReturn = referenceBased.size();
     }
 
     @When("I clear the list")
@@ -202,22 +202,22 @@ public class ListSteps {
 
     @Then("the integer return should be $value")
     public void intReturn(int value) {
-        Assert.assertEquals(value, arrayBasedintReturn);
-        Assert.assertEquals(value, referenceBasedintReturn);
+        Assert.assertEquals(value, arrayBasedIntReturn);
+        Assert.assertEquals(value, referenceBasedIntReturn);
 
         // reset...
-        arrayBasedintReturn = -1;
-        referenceBasedintReturn = -1;
+        arrayBasedIntReturn = -1;
+        referenceBasedIntReturn = -1;
     }
 
     @Then("the size should be $size")
     public void isSize(int size) {
-        Assert.assertEquals(size, arrayBasedintReturn);
-        Assert.assertEquals(size, referenceBasedintReturn);
+        Assert.assertEquals(size, arrayBasedIntReturn);
+        Assert.assertEquals(size, referenceBasedIntReturn);
 
         // reset...
-        arrayBasedintReturn = -1;
-        referenceBasedintReturn = -1;
+        arrayBasedIntReturn = -1;
+        referenceBasedIntReturn = -1;
     }
 
     @Then("the boolean return should be $bool")
