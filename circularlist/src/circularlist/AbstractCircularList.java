@@ -48,7 +48,11 @@ public abstract class AbstractCircularList<E> implements CircularList<E> {
 
     @Override
     public E remove(int index) throws IndexOutOfBoundsException {
-        return null;
+        if (index < 0 || size() <= 0) {
+            throw new IndexOutOfBoundsException();
+        }
+
+        return list.remove(newIndex(index));
     }
 
     @Override
