@@ -13,16 +13,17 @@ public abstract class AbstractCircularList<E> implements CircularList<E> {
 
     @Override
     public boolean isEmpty() {
-        return false;
+        return list.isEmpty();
     }
 
     @Override
     public int size() {
-        return 0;
+        return list.size();
     }
 
     @Override
     public void clear() {
+        list.clear();
 
     }
 
