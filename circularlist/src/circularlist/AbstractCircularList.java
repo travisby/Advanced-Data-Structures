@@ -57,7 +57,7 @@ public abstract class AbstractCircularList<E> implements CircularList<E> {
 
     @Override
     public E get(int index) throws IndexOutOfBoundsException {
-        if (index <= 0 || size() == 0) {
+        if (index < 0 || size() <= 0) {
             throw new IndexOutOfBoundsException();
         }
         return list.get(newIndex(index));

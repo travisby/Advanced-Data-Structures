@@ -142,13 +142,13 @@ Then our list is 0,1,2,3,4,5
 Scenario: IndexOutOfBoundsException gets thrown when adding to a negative index on an empty list
 Given a circularlist size 0 with empty circularlist
 When I add item -1 to the end of the list
-Then throws IndexOutOfBoundsException
+Then our list is -1
 
 !-- return value when index = -1 with full list
 Scenario: IndexOutOfBoundsException gets thrown when adding to a negative index on a filled list
 Given a circularlist size 10 with items 0,1,2,3,4,5,6,7,8,9
 When I add item -1 to the end of the list
-Then throws IndexOutOfBoundsException
+Then our list is 0,1,2,3,4,5,6,7,8,9,-1
 
 !-- state change when index = -1 with empty list
 
@@ -344,7 +344,7 @@ Then throws IndexOutOfBoundsException
 Scenario: isEmpty() should return True on 0 item list
 Given a circularlist size 0 with empty circularlist
 When I ask if it is an empty list
-Then the boolean return should be True
+Then the boolean return should be true
 
 !-- return value when performing on filled
 Scenario: isEmpty() should return False on 1 item list
