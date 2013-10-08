@@ -28,11 +28,20 @@ public abstract class AbstractCircularList<E> implements CircularList<E> {
 
     @Override
     public boolean add(E item) {
-        return false;
+        return list.add(item);
     }
 
     @Override
     public void add(int index, E item) throws IndexOutOfBoundsException {
+        if (index < 0) {
+            throw new IndexOutOfBoundsException();
+        }
+        if (index == size()) {
+            add(item);
+            return;
+        }
+
+        list.add(newIndex(index), item);
 
     }
 
@@ -56,6 +65,9 @@ public abstract class AbstractCircularList<E> implements CircularList<E> {
     }
 
     private int newIndex(int index) {
+        if (size() <= 0) {
+            return 0;
+        }
         return index % size();
     }
 }

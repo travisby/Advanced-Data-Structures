@@ -39,8 +39,8 @@ public class CircularListSteps {
     public void setList(int size, List<Integer> items) {
         emptyList();
         for (int i = 0; i < size; i++) {
-            arrayBased.add(i, items.get(i));
-            referenceBased.add(i, items.get(i));
+            arrayBased.add(items.get(i));
+            referenceBased.add(items.get(i));
         }
     }
 
