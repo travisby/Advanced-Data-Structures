@@ -53,9 +53,6 @@ public class LinkedList<E> implements List<E> {
             throw new IndexOutOfBoundsException();
         }
 
-        System.out.println(size());
-        System.out.println(index);
-
         return getNode(index).getData();
     }
 
