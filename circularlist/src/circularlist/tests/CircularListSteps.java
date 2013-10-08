@@ -7,6 +7,7 @@ package circularlist.tests;
 
 import circularlist.CircularListArrayBased;
 import circularlist.CircularListReferenceBased;
+import org.jbehave.core.annotations.AsParameterConverter;
 import org.jbehave.core.annotations.Given;
 import org.jbehave.core.annotations.Then;
 import org.jbehave.core.annotations.When;
@@ -34,6 +35,15 @@ public class CircularListSteps {
     private int referenceBasedIntegerReturn = 0;
     private int arrayBasedIntReturn;
     private int referenceBasedIntReturn;
+
+
+    @AsParameterConverter
+    public boolean toBool(String s) {
+        if (s.equals("true")) {
+            return true;
+        }
+        return false;
+    }
 
     @Given("a circularlist size $size with items $items")
     public void setList(int size, List<Integer> items) {
