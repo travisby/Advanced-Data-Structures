@@ -3,6 +3,7 @@ package circularlist.tests;
 import de.codecentric.jbehave.junit.monitoring.JUnitReportingRunner;
 import org.jbehave.core.configuration.Configuration;
 import org.jbehave.core.configuration.MostUsefulConfiguration;
+import org.jbehave.core.failures.FailingUponPendingStep;
 import org.jbehave.core.junit.JUnitStories;
 import org.jbehave.core.steps.InjectableStepsFactory;
 import org.jbehave.core.steps.InstanceStepsFactory;
@@ -21,7 +22,10 @@ public class CircularListTest extends JUnitStories {
 
     public CircularListTest() {
         super();
-        configuration = new MostUsefulConfiguration();
+        configuration = new MostUsefulConfiguration()
+                .usePendingStepStrategy(new FailingUponPendingStep())
+
+        ;
     }
 
     @Override
