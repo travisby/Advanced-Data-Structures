@@ -37,10 +37,6 @@ public abstract class AbstractCircularList<E> implements CircularList<E> {
         if (index < 0) {
             throw new IndexOutOfBoundsException();
         }
-        if (index == size()) {
-            add(item);
-            return;
-        }
 
         list.add(newIndex(index), item);
 
