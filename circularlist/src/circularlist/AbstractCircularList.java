@@ -62,7 +62,7 @@ public abstract class AbstractCircularList<E> implements CircularList<E> {
 
     @Override
     public Iterator<E> iterator() {
-        return null;
+        return new CircularListIterator(this);
     }
 
     private int newIndex(int index) {
