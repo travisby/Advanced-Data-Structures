@@ -169,11 +169,6 @@ public class CircularListSteps {
         whenThrew();
     }
 
-    @Then("our list is empty")
-    public void ourlistisemptyList() {
-        Assert.assertEquals(0, arrayBased.size());
-        Assert.assertEquals(0, referenceBased.size());
-    }
 
     @Then("our list is $list")
     public void ourListIs(List<Integer> list) {
@@ -181,6 +176,13 @@ public class CircularListSteps {
             Assert.assertEquals(list.get(i), arrayBased.get(i));
             Assert.assertEquals(list.get(i), referenceBased.get(i));
         }
+    }
+
+    @Then("we have an empty list")
+    public void ourListIsEmpty() {
+        Assert.assertTrue(arrayBased.size() == 0);
+        Assert.assertTrue(referenceBased.size() == 0);
+
     }
 
     @Then("the boolean return should be $tf")
