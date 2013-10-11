@@ -215,8 +215,8 @@ Then our list is 0,1,2,3,4,5
 
 !-- state change value on index = 2 * size + 1
 Scenario: Adding an item should add items while looping multiple times
-Given a circularlist size 5 with items 1,2,3,4,5
-When I add item 0 to index 11
+Given a circularlist size 5 with items 0,2,3,4,5
+When I add item 1 to index 11
 Then our list is 0,1,2,3,4,5
 
 !-- return value when index = -1 with empty list
