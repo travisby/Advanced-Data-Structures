@@ -1,9 +1,11 @@
 package list;
 
 /**
- * User: Travis Beatty
- * Date: 9/29/13
- * Time: 12:08 AM
+ * LinkedList is an implementation of List using a single pointer from each piece to another of the list
+ *
+ * @param <E> type for our list
+ * @author Travis
+ * @version 1.0.0
  */
 public class LinkedList<E> implements List<E> {
     /* An empty list is an instantiated head node.  The "last" element is where the next piece of data should be added,
@@ -12,16 +14,32 @@ public class LinkedList<E> implements List<E> {
     private Node<E> head;
     private Node<E> last;
 
+    /**
+     * Initializes our list
+     */
     public LinkedList() {
         clear();
     }
 
+    /**
+     * Adds our item to the end of the list
+     *
+     * @param item to add
+     * @return true if successfully added
+     */
     @Override
     public boolean add(E item) {
         add(size(), item);
         return true;
     }
 
+    /**
+     * Adds item to specified index
+     *
+     * @param index to add to
+     * @param item  to add
+     * @throws IndexOutOfBoundsException on negative index, or non-existent index
+     */
     @Override
     public void add(int index, E item) throws IndexOutOfBoundsException {
         Node<E> parentNode;
@@ -40,11 +58,21 @@ public class LinkedList<E> implements List<E> {
         }
     }
 
+    /**
+     * Empties our list
+     */
     @Override
     public void clear() {
         head = new Node<E>();
     }
 
+    /**
+     * Retrieve element at index
+     *
+     * @param index to search
+     * @return element at index
+     * @throws IndexOutOfBoundsException on negative index, or non-existent index
+     */
     @Override
     public E get(int index) throws IndexOutOfBoundsException {
         if (index < 0 || index >= size()) {
@@ -54,11 +82,23 @@ public class LinkedList<E> implements List<E> {
         return getNode(index).getData();
     }
 
+    /**
+     * Determine if our list is empty
+     *
+     * @return true on 0-item list
+     */
     @Override
     public boolean isEmpty() {
         return head.getNext() == null;
     }
 
+    /**
+     * Removes element at specified index
+     *
+     * @param index to search for
+     * @return item removed at index
+     * @throws IndexOutOfBoundsException on negative index, or non-existent index
+     */
     @Override
     public E remove(int index) throws IndexOutOfBoundsException {
         Node<E> removedNodeParent;
@@ -81,6 +121,11 @@ public class LinkedList<E> implements List<E> {
 
     }
 
+    /**
+     * Get the number of elements in our list
+     *
+     * @return number of elements
+     */
     @Override
     public int size() {
         int counter;
@@ -93,6 +138,10 @@ public class LinkedList<E> implements List<E> {
         return counter;
     }
 
+    /**
+     * @param index
+     * @return node at index
+     */
     private Node<E> getNode(int index) {
         Node<E> pointer = head;
         for (int i = index; i > 0; i--) {

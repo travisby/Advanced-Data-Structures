@@ -3,9 +3,11 @@ package circularlist;
 import list.ArrayList;
 
 /**
- * User: Travis Beatty
- * Date: 9/28/13
- * Time: 6:51 PM
+ * Implementation of AbstractCircularList.  Uses circularlist.list.ArrayList as the underlying data structure
+ *
+ * @param <E> type of elements in list
+ * @author Travis
+ * @version 1.0.0
  */
 @SuppressWarnings({"Annotation", "ClassWithoutLogger", "PublicMethodWithoutLogging", "SuppressionAnnotation", "LocalCanBeFinal", "PublicConstructor"})
 

@@ -1,7 +1,11 @@
 package list;
 
 /**
- * Created by Travis on 10/7/13.
+ * Piece of data that points to another piece of data
+ *
+ * @param <E> type of our data
+ * @author Travis
+ * @version 1.0.0
  */
 class Node<E> {
 
