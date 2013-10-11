@@ -208,9 +208,9 @@ When I add item 4 to index 4
 Then our list is 0,1,2,3,4,5
 
 !-- state change value on index = size
-Scenario: Adding an item to the end+1 of our list adds it to the beginning
-Given a circularlist size 5 with items 1,2,3,4,5
-When I add item 0 to index 6
+Scenario: Adding an item to the end+1 of our list adds it to the second spot
+Given a circularlist size 5 with items 0,2,3,4,5
+When I add item 1 to index 6
 Then our list is 0,1,2,3,4,5
 
 !-- state change value on index = 2 * size + 1
