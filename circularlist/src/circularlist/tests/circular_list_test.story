@@ -169,9 +169,9 @@ When I add item 0 to index 0
 Then our list is 0
 
 !-- state change on filled
-Scenario: Adding an item to the end of the list adds our element
-Given a circularlist size 5 with items 0,1,2,3,4
-When I add item 5 to index 5
+Scenario: Adding an item index = size() will add to the beginning
+Given a circularlist size 5 with items 1,2,3,4,5
+When I add item 0 to index 0
 Then our list is 0,1,2,3,4,5
 
 !-- return value on index = 0
@@ -202,9 +202,9 @@ When I add item 4 to index 4
 Then our list is 0,1,2,3,4,5
 
 !-- state change value on index = size - 1
-Scenario: Addng an item to the end of our list adds it to the end
-Given a circularlist size 5 with items 0,1,2,3,4
-When I add item 5 to index 5
+Scenario: Adding an item to the end of our list adds it to the end
+Given a circularlist size 5 with items 0,1,2,3,5
+When I add item 4 to index 4
 Then our list is 0,1,2,3,4,5
 
 !-- state change value on index = size
@@ -214,7 +214,7 @@ When I add item 0 to index 6
 Then our list is 0,1,2,3,4,5
 
 !-- state change value on index = 2 * size + 1
-Scenario: Addng an item should add items while looping multiple times
+Scenario: Adding an item should add items while looping multiple times
 Given a circularlist size 5 with items 1,2,3,4,5
 When I add item 0 to index 11
 Then our list is 0,1,2,3,4,5
