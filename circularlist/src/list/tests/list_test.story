@@ -386,7 +386,3 @@ Scenario: clear() should empty a full list
 Given a list size 1 with items 0
 When I clear the list
 Then the size should be 0
-
-!-- iterator()
-
-!-- TODO

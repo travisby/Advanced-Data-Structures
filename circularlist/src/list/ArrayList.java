@@ -1,7 +1,5 @@
 package list;
 
-import java.util.Iterator;
-
 /**
  * User: Travis Beatty
  * Date: 9/29/13
@@ -96,12 +94,6 @@ public class ArrayList<E> implements List<E> {
     @Override
     public int size() {
         return largestIndex + 1;
-    }
-
-    @Override
-    public Iterator<E> iterator() {
-        // TODO
-        return null;
     }
 
     private E[] getArrayOfSize(int size) {

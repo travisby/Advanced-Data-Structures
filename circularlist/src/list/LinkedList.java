@@ -1,7 +1,5 @@
 package list;
 
-import java.util.Iterator;
-
 /**
  * User: Travis Beatty
  * Date: 9/29/13
@@ -93,12 +91,6 @@ public class LinkedList<E> implements List<E> {
         }
 
         return counter;
-    }
-
-    @Override
-    public Iterator<E> iterator() {
-        // TODO
-        return null;
     }
 
     private Node<E> getNode(int index) {
