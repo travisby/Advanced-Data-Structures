@@ -48,18 +48,25 @@ public class VacSys {
      * @param lines
      */
     private void buildTPop(ArrayList<String[]> lines) {
-        // TODO
-
+        this.tPop = lines.size();
     }
 
     /**
      * Sets the zPops hashmap for easy searchability
-     *
      * @param lines
      */
     private void buildZPops(ArrayList<String[]> lines) {
-        // TODO
-
+        String key;
+        // iterate through lines
+        for (int i = 0; i < lines.size(); i++) {
+            key = lines.get(i)[2];
+            // Set the key's value to zero if it does not exist
+            if (!this.zPops.containsKey(key)) {
+                this.zPops.put(key, 0);
+            }
+            // Increment the key
+            this.zPops.put(key, this.zPops.get(key) + 1);
+        }
     }
 
     /**
