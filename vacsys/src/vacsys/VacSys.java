@@ -88,8 +88,9 @@ public class VacSys {
      * @return population constant
      */
     private int getPopConstant(String zip) {
-        // TODO
-        return 0;
+        float zpop = this.zPops.get(zip);
+        float tpop = this.tPop;
+        return (int) (zpop / tpop * 10);
     }
 
     /**
