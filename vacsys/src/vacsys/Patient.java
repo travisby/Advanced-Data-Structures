@@ -5,23 +5,7 @@ package vacsys;
  *
  * @author Travis
  */
-public class Patient implements Comparable<Patient> {
-
-    public String getName() {
-        // TODO
-        return "";
-    }
-
-    public int age() {
-        // TODO
-        return 0;
-    }
-
-    // We use a String for zipcodes because they seldom need numerical ordering, and will be smaller
-    public String zip() {
-        // TODO
-        return "";
-    }
+public class Patient extends Person implements Comparable<Patient> {
 
     public int priorityValue() {
         // TODO
