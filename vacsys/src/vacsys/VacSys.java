@@ -37,7 +37,7 @@ public class VacSys {
     /**
      * Remove the next request from the system
      *
-     * @return TODO figure out what we should return...
+     * @return Comma-Delimited String on Patient Fields name, age, zip
      */
     public String remove() {
         // TODO Remove the next request from the system
