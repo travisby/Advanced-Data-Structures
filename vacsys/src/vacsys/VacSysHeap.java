@@ -1,5 +1,7 @@
 package vacsys;
 
+import java.util.ArrayDeque;
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Iterator;
 
@@ -7,6 +9,8 @@ import java.util.Iterator;
  * Efficient Priority Queue for a Vaccination System
  */
 public class VacSysHeap implements VacSysPriorityQueue {
+
+    protected ArrayList<ArrayDeque<Patient>> queues;
 
     /**
      * Returns the number of elements in this collection.  If this collection
@@ -17,8 +21,12 @@ public class VacSysHeap implements VacSysPriorityQueue {
      */
     @Override
     public int size() {
-        // TODO
-        return 0;
+        int count = 0;
+        Iterator<ArrayDeque<Patient>> iter = queues.iterator();
+        while (iter.hasNext()) {
+            count += iter.next().size();
+        }
+        return count;
     }
 
     /**
@@ -28,8 +36,7 @@ public class VacSysHeap implements VacSysPriorityQueue {
      */
     @Override
     public boolean isEmpty() {
-        // TODO
-        return false;
+        return queues.isEmpty();
     }
 
     /**
@@ -50,7 +57,12 @@ public class VacSysHeap implements VacSysPriorityQueue {
      */
     @Override
     public boolean contains(Object o) {
-        // TODO
+        Iterator<Patient> iter = iterator();
+        while (iter.hasNext()) {
+            if (iter.next().equals(o)) {
+                return true;
+            }
+        }
         return false;
     }
 
@@ -86,8 +98,13 @@ public class VacSysHeap implements VacSysPriorityQueue {
      */
     @Override
     public Object[] toArray() {
-        // TODO
-        return new Object[0];
+        Object[] objs = new Object[size()];
+        Iterator<Patient> iter = iterator();
+        int i = 0;
+        while (iter.hasNext()) {
+            objs[i++] = iter.next();
+        }
+        return objs;
     }
 
     /**
@@ -134,8 +151,7 @@ public class VacSysHeap implements VacSysPriorityQueue {
      */
     @Override
     public <T> T[] toArray(T[] a) {
-        // TODO
-        return null;
+        return (T[]) toArray();
     }
 
     /**
@@ -207,8 +223,13 @@ public class VacSysHeap implements VacSysPriorityQueue {
      */
     @Override
     public boolean containsAll(Collection<?> c) {
-        // TODO
-        return false;
+        Iterator<?> iter = c.iterator();
+        while (iter.hasNext()) {
+            if (!contains(iter.next())) {
+                return false;
+            }
+        }
+        return true;
     }
 
     /**
@@ -237,8 +258,15 @@ public class VacSysHeap implements VacSysPriorityQueue {
      */
     @Override
     public boolean addAll(Collection<? extends Patient> c) {
-        // TODO
-        return false;
+        if (c.isEmpty()) {
+            return false;
+        }
+
+        Iterator<? extends Patient> iter = c.iterator();
+        while (iter.hasNext()) {
+            add(iter.next());
+        }
+        return true;
     }
 
     /**
@@ -266,8 +294,15 @@ public class VacSysHeap implements VacSysPriorityQueue {
      */
     @Override
     public boolean removeAll(Collection<?> c) {
-        // TODO
-        return false;
+        if (c.isEmpty()) {
+            return false;
+        }
+
+        Iterator<?> iter = c.iterator();
+        while (iter.hasNext()) {
+            remove(iter.next());
+        }
+        return true;
     }
 
     /**
@@ -294,8 +329,7 @@ public class VacSysHeap implements VacSysPriorityQueue {
      */
     @Override
     public boolean retainAll(Collection<?> c) {
-        // TODO
-        return false;
+        throw new UnsupportedOperationException();
     }
 
     /**
@@ -307,8 +341,7 @@ public class VacSysHeap implements VacSysPriorityQueue {
      */
     @Override
     public void clear() {
-        // TODO
-
+        throw new UnsupportedOperationException();
     }
 
     /**
@@ -344,8 +377,10 @@ public class VacSysHeap implements VacSysPriorityQueue {
      */
     @Override
     public Patient remove() {
-        // TODO
-        return null;
+        if (isEmpty()) {
+            throw new java.util.NoSuchElementException();
+        }
+        return poll();
     }
 
     /**
