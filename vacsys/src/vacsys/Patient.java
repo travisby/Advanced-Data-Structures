@@ -2,12 +2,16 @@ package vacsys;
 
 /**
  * Person that has a priorityValue to order compared to other patients
+ *
  * @author Travis
  */
 public class Patient extends Person implements Comparable<Patient> {
 
-    public Patient(String name, int age, String zip) {
+    protected int popConstant;
+
+    public Patient(String name, int age, String zip, int popConstant) {
         super(name, age, zip);
+        this.popConstant = popConstant;
     }
 
     /**
@@ -16,8 +20,7 @@ public class Patient extends Person implements Comparable<Patient> {
      * @return priorityValue
      */
     public int priorityValue() {
-        // TODO
-        return 0;
+        return (Math.abs(35 - age) / 5) + this.popConstant;
     }
 
     /**
@@ -55,7 +58,6 @@ public class Patient extends Person implements Comparable<Patient> {
      * @return a negative integer, zero, or a positive integer as this object
      * is less than, equal to, or greater than the specified object.
      * @throws NullPointerException if the specified object is null
-
      */
     @Override
     public int compareTo(Patient o) throws NullPointerException {

@@ -1,6 +1,8 @@
 package vacsys;
 
 import java.io.*;
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.concurrent.ArrayBlockingQueue;
 
 /**
@@ -9,6 +11,8 @@ import java.util.concurrent.ArrayBlockingQueue;
 public class VacSys {
 
     VacSysHeap priorityQueue;
+    HashMap<String, Integer> zPops;
+    int tPop;
 
     /**
      * Create a system with an empty priority queue
@@ -19,25 +23,43 @@ public class VacSys {
 
     /**
      * Create a system loaded with requests from a batch file
-     *
      * @param filename batch file
+     * @throws java.io.FileNotFoundException file does not exist
+     * @throws IOException Could not read file successfully
      */
-    public VacSys(String filename) {
-        BufferedReader reader = null;
-        try {
-            reader = new BufferedReader(new FileReader(filename));
-        } catch (FileNotFoundException e) {
-            // No spec to handle exceptions
-        }
+    public VacSys(String filename) throws FileNotFoundException, IOException {
+        BufferedReader reader;
+        ArrayList<String[]> lines = new ArrayList<String[]>();
         String line;
-        try {
-            while ((line = reader.readLine()) != null) {
-                String[] linelist = line.split(",");
-                this.insert(linelist[0], Integer.parseInt(linelist[1]), linelist[2]);
-            }
-        } catch (IOException x) {
-            // No spec to handle exceptions
+
+        // toFile
+        // build lines for each patient where [0] = name, [1] = age, [2] = zip
+        reader = new BufferedReader(new FileReader(filename));
+        while ((line = reader.readLine()) != null) {
+            lines.add(line.split(","));
         }
+
+        this.buildZPops(lines);
+        this.buildTPop(lines);
+    }
+
+    /**
+     * Sets the tPop field to the total population of the file
+     * @param lines
+     */
+    private void buildTPop(ArrayList<String[]> lines) {
+        // TODO
+
+    }
+
+    /**
+     * Sets the zPops hashmap for easy searchability
+     *
+     * @param lines
+     */
+    private void buildZPops(ArrayList<String[]> lines) {
+        // TODO
+
     }
 
     /**
@@ -49,7 +71,18 @@ public class VacSys {
      * @return successful?
      */
     public boolean insert(String name, int age, String zip) {
-        return priorityQueue.add(new Patient(name, age, zip));
+        return priorityQueue.add(new Patient(name, age, zip, this.getPopConstant(zip)));
+    }
+
+    /**
+     * Gets the population constant for a particular zip code
+     *
+     * @param zip code in question
+     * @return population constant
+     */
+    private int getPopConstant(String zip) {
+        // TODO
+        return 0;
     }
 
     /**
