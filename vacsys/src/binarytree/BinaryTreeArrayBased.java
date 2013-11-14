@@ -9,6 +9,16 @@ import java.util.Iterator;
  * @author Travis
  */
 public class BinaryTreeArrayBased<E> implements BinaryTree<E> {
+
+    protected NodeArrayBased<E> head;
+
+    /**
+     * Creates an empty BT
+     */
+    public BinaryTreeArrayBased() {
+        this.head = new NodeArrayBased<E>();
+    }
+
     /**
      * Get the root of our tree
      *
@@ -16,8 +26,7 @@ public class BinaryTreeArrayBased<E> implements BinaryTree<E> {
      */
     @Override
     public NodeArrayBased<E> getRoot() {
-        // TODO
-        return null;
+        return this.head;
     }
 
     /**
