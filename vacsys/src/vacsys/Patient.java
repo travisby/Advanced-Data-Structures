@@ -51,11 +51,13 @@ public class Patient extends Person implements Comparable<Patient> {
      * @return a negative integer, zero, or a positive integer as this object
      * is less than, equal to, or greater than the specified object.
      * @throws NullPointerException if the specified object is null
-     * @throws ClassCastException   if the specified object's type prevents it
-     *                              from being compared to this object.
+
      */
     @Override
-    public int compareTo(Patient o) {
-        return 0;
+    public int compareTo(Patient o) throws NullPointerException {
+        if (o == null) {
+            throw new NullPointerException();
+        }
+        return this.priorityValue() - o.priorityValue();
     }
 }
