@@ -6,6 +6,10 @@ package vacsys;
  */
 public class Patient extends Person implements Comparable<Patient> {
 
+    public Patient(String name, int age, String zip) {
+        super(name, age, zip);
+    }
+
     /**
      * How much this patient is worth to the world
      *
