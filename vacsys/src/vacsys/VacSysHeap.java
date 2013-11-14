@@ -1,6 +1,5 @@
 package vacsys;
 
-import java.util.ArrayDeque;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Iterator;
@@ -10,7 +9,7 @@ import java.util.Iterator;
  */
 public class VacSysHeap implements VacSysPriorityQueue {
 
-    protected ArrayList<ArrayDeque<Patient>> queues;
+    protected ArrayList<PatientQueue> queues;
 
     /**
      * Returns the number of elements in this collection.  If this collection
@@ -22,7 +21,7 @@ public class VacSysHeap implements VacSysPriorityQueue {
     @Override
     public int size() {
         int count = 0;
-        Iterator<ArrayDeque<Patient>> iter = queues.iterator();
+        Iterator<PatientQueue> iter = queues.iterator();
         while (iter.hasNext()) {
             count += iter.next().size();
         }
@@ -173,8 +172,78 @@ public class VacSysHeap implements VacSysPriorityQueue {
      */
     @Override
     public boolean add(Patient patient) {
-        // TODO
-        return false;
+        // See if a queue already exists with the same value
+        Iterator<PatientQueue> iter = queues.iterator();
+        while (iter.hasNext()) {
+            PatientQueue queue = iter.next();
+
+            // if it does exist, insert and be done with it
+            if (queue.priorityValue() == patient.priorityValue()) {
+                queue.add(patient);
+                return true;
+            }
+        }
+        // So it didn't exist...
+        // Create a new queue and add our new element to it
+        PatientQueue newQueue = new PatientQueue(patient.priorityValue());
+        newQueue.add(patient);
+        queues.add(newQueue);
+
+        int currentPlace = queues.size() - 1;
+
+        // nothing more to do here... we are the only queue available
+        if (currentPlace >= 1) {
+            return true;
+        }
+
+        // trickle up until we are in the correct place
+        while (queues.get(currentPlace).priorityValue() < queues.get(parentIndex(currentPlace)).priorityValue()) {
+            swapIndices(currentPlace, parentIndex(currentPlace));
+            currentPlace = parentIndex(currentPlace);
+        }
+
+        return true;
+    }
+
+    /**
+     * Change the values between the two indices
+     * @param a first Queue
+     * @param b second Queue
+     */
+    private void swapIndices(int a, int b) {
+        PatientQueue temp = queues.get(a);
+        queues.set(a, queues.get(b));
+        queues.set(b, temp);
+    }
+
+    /**
+     * Array representation of a BT
+     *
+     * @param i
+     * @return
+     */
+    public static int parentIndex(int i) {
+        return (i - 1) / 2;
+    }
+
+    /**
+     * Array representation of a BT
+     *
+     * @param i
+     * @return
+     */
+    public static int leftChildIndex(int i) {
+        return i * 2 + 1;
+    }
+
+    /**
+     * Array representation of a BT
+     *
+     * @param i
+     * @return
+     */
+    public static int rightChildIndex(int i) {
+        return i * 2 + 2;
     }
 
     /**
@@ -199,8 +268,7 @@ public class VacSysHeap implements VacSysPriorityQueue {
      */
     @Override
     public boolean remove(Object o) {
-        // TODO
-        return false;
+        throw new UnsupportedOperationException();
     }
 
     /**
