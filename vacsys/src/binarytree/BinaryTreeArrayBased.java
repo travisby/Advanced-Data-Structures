@@ -1,5 +1,6 @@
 package binarytree;
 
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Iterator;
 
@@ -10,13 +11,14 @@ import java.util.Iterator;
  */
 public class BinaryTreeArrayBased<E> implements BinaryTree<E> {
 
-    protected NodeArrayBased<E> head;
+    protected ArrayList<NodeArrayBased<E>> items;
 
     /**
      * Creates an empty BT
      */
     public BinaryTreeArrayBased() {
-        this.head = new NodeArrayBased<E>();
+        this.items = new ArrayList<NodeArrayBased<E>>();
+        this.items.add(new NodeArrayBased<E>());
     }
 
     /**
@@ -26,7 +28,7 @@ public class BinaryTreeArrayBased<E> implements BinaryTree<E> {
      */
     @Override
     public NodeArrayBased<E> getRoot() {
-        return this.head;
+        return this.items.get(1);
     }
 
     /**
@@ -38,8 +40,7 @@ public class BinaryTreeArrayBased<E> implements BinaryTree<E> {
      */
     @Override
     public int size() {
-        // TODO
-        return 0;
+        return items.size();
     }
 
     /**
