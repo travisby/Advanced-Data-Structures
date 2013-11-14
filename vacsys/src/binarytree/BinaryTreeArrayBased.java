@@ -73,11 +73,12 @@ public class BinaryTreeArrayBased<E> implements BinaryTree<E> {
      */
     @Override
     public boolean contains(Object o) {
-        // TODO
-        return false;
+        throw new UnsupportedOperationException();
     }
 
     /**
+     * Level order traversal
+     *
      * Returns an iterator over the elements in this collection.  There are no
      * guarantees concerning the order in which the elements are returned
      * (unless this collection is an instance of some class that provides a
@@ -87,8 +88,13 @@ public class BinaryTreeArrayBased<E> implements BinaryTree<E> {
      */
     @Override
     public Iterator<E> iterator() {
-        // TODO
-        return null;
+        ArrayList<E> iterItems = new ArrayList<E>();
+        Iterator<NodeArrayBased<E>> iter = this.items.iterator();
+        while (iter.hasNext()) {
+            iterItems.add(iter.next().getValue());
+        }
+
+        return iterItems.iterator();
     }
 
     /**
@@ -109,8 +115,7 @@ public class BinaryTreeArrayBased<E> implements BinaryTree<E> {
      */
     @Override
     public Object[] toArray() {
-        // TODO
-        return new Object[0];
+        return items.toArray();
     }
 
     /**
@@ -157,8 +162,7 @@ public class BinaryTreeArrayBased<E> implements BinaryTree<E> {
      */
     @Override
     public <T> T[] toArray(T[] a) {
-        // TODO
-        return null;
+        return (T[]) items.toArray();
     }
 
     /**
@@ -196,8 +200,7 @@ public class BinaryTreeArrayBased<E> implements BinaryTree<E> {
      */
     @Override
     public boolean add(E e) {
-        // TODO
-        return false;
+        return items.add(new NodeArrayBased<E>(e));
     }
 
     /**
@@ -222,8 +225,7 @@ public class BinaryTreeArrayBased<E> implements BinaryTree<E> {
      */
     @Override
     public boolean remove(Object o) {
-        // TODO
-        return false;
+        throw new UnsupportedOperationException();
     }
 
     /**
@@ -246,8 +248,7 @@ public class BinaryTreeArrayBased<E> implements BinaryTree<E> {
      */
     @Override
     public boolean containsAll(Collection<?> c) {
-        // TODO
-        return false;
+        throw new UnsupportedOperationException();
     }
 
     /**
@@ -276,8 +277,7 @@ public class BinaryTreeArrayBased<E> implements BinaryTree<E> {
      */
     @Override
     public boolean addAll(Collection<? extends E> c) {
-        // TODO
-        return false;
+        throw new UnsupportedOperationException();
     }
 
     /**
@@ -305,8 +305,7 @@ public class BinaryTreeArrayBased<E> implements BinaryTree<E> {
      */
     @Override
     public boolean removeAll(Collection<?> c) {
-        // TODO
-        return false;
+        throw new UnsupportedOperationException();
     }
 
     /**
@@ -333,8 +332,7 @@ public class BinaryTreeArrayBased<E> implements BinaryTree<E> {
      */
     @Override
     public boolean retainAll(Collection<?> c) {
-        // TODO
-        return false;
+        throw new UnsupportedOperationException();
     }
 
     /**
@@ -346,7 +344,6 @@ public class BinaryTreeArrayBased<E> implements BinaryTree<E> {
      */
     @Override
     public void clear() {
-        // TODO
-
+        throw new UnsupportedOperationException();
     }
 }
