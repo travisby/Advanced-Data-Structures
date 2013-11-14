@@ -5,11 +5,13 @@ package vacsys;
  */
 public class VacSys {
 
+    VacSysHeap priorityQueue;
+
     /**
      * Create a system with an empty priority queue
      */
     public VacSys() {
-        // TODO Create a system with an empty priority queue
+        priorityQueue = new VacSysHeap();
     }
 
     /**
