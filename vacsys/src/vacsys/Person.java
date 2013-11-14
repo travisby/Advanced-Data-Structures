@@ -12,6 +12,12 @@ public class Person {
     // We use a String for zipcodes because they seldom need numerical ordering, and will be smaller
     protected String zip;
 
+    public Person(String name, int age, String zip) {
+        this.name = name;
+        this.age = age;
+        this.zip = zip;
+    }
+
     /**
      * Gets the name of this person
      *
