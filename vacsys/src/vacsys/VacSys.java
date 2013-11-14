@@ -32,8 +32,7 @@ public class VacSys {
      * @return successful?
      */
     public boolean insert(String name, int age, String zip) {
-        // TODO Add a new request to the system
-        return false;
+        return priorityQueue.add(new Patient(name, age, zip));
     }
 
     /**
