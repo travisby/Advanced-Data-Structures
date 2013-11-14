@@ -64,4 +64,9 @@ public class Patient extends Person implements Comparable<Patient> {
         }
         return this.priorityValue() - o.priorityValue();
     }
+
+    @Override
+    public String toString() {
+        return this.name + ", " + this.age + ", " + this.zip;
+    }
 }
