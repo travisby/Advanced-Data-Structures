@@ -459,8 +459,13 @@ public class VacSysHeap implements VacSysPriorityQueue {
      */
     @Override
     public Patient poll() {
-        // TODO
-        return null;
+        Patient result = queues.get(0).poll();
+
+        // If the meta-queue is now empty, remove it
+        if (queues.get(0).size() <= 0) {
+            queues.remove(0);
+        }
+        return result;
     }
 
     /**
@@ -473,8 +478,7 @@ public class VacSysHeap implements VacSysPriorityQueue {
      */
     @Override
     public Patient element() {
-        // TODO
-        return null;
+        return queues.get(0).element();
     }
 
     /**
@@ -485,7 +489,6 @@ public class VacSysHeap implements VacSysPriorityQueue {
      */
     @Override
     public Patient peek() {
-        // TODO
-        return null;
+        return queues.get(0).peek();
     }
 }
