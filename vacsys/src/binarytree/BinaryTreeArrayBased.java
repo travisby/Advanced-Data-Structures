@@ -18,17 +18,19 @@ public class BinaryTreeArrayBased<E> implements BinaryTree<E> {
      */
     public BinaryTreeArrayBased() {
         this.items = new ArrayList<NodeArrayBased<E>>();
-        this.items.add(new NodeArrayBased<E>());
     }
 
     /**
      * Get the root of our tree
      *
-     * @return root
+     * @return root, null if empty
      */
     @Override
     public NodeArrayBased<E> getRoot() {
-        return this.items.get(1);
+        if (this.items.size() > 0) {
+            return this.items.get(1);
+        }
+        return null;
     }
 
     /**
@@ -50,8 +52,7 @@ public class BinaryTreeArrayBased<E> implements BinaryTree<E> {
      */
     @Override
     public boolean isEmpty() {
-        // TODO
-        return false;
+        return items.isEmpty();
     }
 
     /**
