@@ -3,6 +3,9 @@ package vacsys;
 import java.util.Collection;
 import java.util.Iterator;
 
+/**
+ * Efficient Priority Queue for a Vaccination System
+ */
 public class VacSysHeap implements VacSysPriorityQueue {
 
     /**
