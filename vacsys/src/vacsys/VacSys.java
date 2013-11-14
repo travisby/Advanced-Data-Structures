@@ -57,6 +57,7 @@ public class VacSys {
      */
     private void buildZPops(ArrayList<String[]> lines) {
         String key;
+        zPops = new HashMap<String, Integer>();
         // iterate through lines
         for (int i = 0; i < lines.size(); i++) {
             key = lines.get(i)[2];
