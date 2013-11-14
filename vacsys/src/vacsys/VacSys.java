@@ -1,8 +1,6 @@
 package vacsys;
 
-import java.io.BufferedWriter;
-import java.io.FileWriter;
-import java.io.IOException;
+import java.io.*;
 import java.util.concurrent.ArrayBlockingQueue;
 
 /**
@@ -25,7 +23,21 @@ public class VacSys {
      * @param filename batch file
      */
     public VacSys(String filename) {
-        // TODO Create a system loaded with requests from the batch ﬁle given by ﬁlename
+        BufferedReader reader = null;
+        try {
+            reader = new BufferedReader(new FileReader(filename));
+        } catch (FileNotFoundException e) {
+            // No spec to handle exceptions
+        }
+        String line;
+        try {
+            while ((line = reader.readLine()) != null) {
+                String[] linelist = line.split(",");
+                this.insert(linelist[0], Integer.parseInt(linelist[1]), linelist[2]);
+            }
+        } catch (IOException x) {
+            // No spec to handle exceptions
+        }
     }
 
     /**
