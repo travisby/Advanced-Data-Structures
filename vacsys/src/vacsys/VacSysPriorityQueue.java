@@ -7,5 +7,5 @@ import java.util.Queue;
  *
  * @author Travis
  */
-public interface VacSysPriorityQueue<E> extends Queue<E> {
+public interface VacSysPriorityQueue extends Queue<Patient> {
 }

@@ -3,13 +3,7 @@ package vacsys;
 import java.util.Collection;
 import java.util.Iterator;
 
-/**
- * Priority Queue for VacSys ordering
- *
- * @param <E> type of items to be put into our Priority Queue
- * @author Travis
- */
-public class VacSysHeap<E> implements VacSysPriorityQueue<E> {
+public class VacSysHeap implements VacSysPriorityQueue {
 
     /**
      * Returns the number of elements in this collection.  If this collection
@@ -66,7 +60,7 @@ public class VacSysHeap<E> implements VacSysPriorityQueue<E> {
      * @return an <tt>Iterator</tt> over the elements in this collection
      */
     @Override
-    public Iterator<E> iterator() {
+    public Iterator<Patient> iterator() {
         // TODO
         return null;
     }
@@ -147,8 +141,8 @@ public class VacSysHeap<E> implements VacSysPriorityQueue<E> {
      * <tt>true</tt> upon success and throwing an <tt>IllegalStateException</tt>
      * if no space is currently available.
      *
-     * @param e the element to add
-     * @return <tt>true</tt> (as specified by {@link java.util.Collection#add})
+     * @param patient the element to add
+     * @return <tt>true</tt> (as specified by {@link Collection#add})
      * @throws IllegalStateException    if the element cannot be added at this
      *                                  time due to capacity restrictions
      * @throws ClassCastException       if the class of the specified element
@@ -159,7 +153,7 @@ public class VacSysHeap<E> implements VacSysPriorityQueue<E> {
      *                                  prevents it from being added to this queue
      */
     @Override
-    public boolean add(E e) {
+    public boolean add(Patient patient) {
         // TODO
         return false;
     }
@@ -239,7 +233,7 @@ public class VacSysHeap<E> implements VacSysPriorityQueue<E> {
      * @see #add(Object)
      */
     @Override
-    public boolean addAll(Collection<? extends E> c) {
+    public boolean addAll(Collection<? extends Patient> c) {
         // TODO
         return false;
     }
@@ -321,7 +315,7 @@ public class VacSysHeap<E> implements VacSysPriorityQueue<E> {
      * preferable to {@link #add}, which can fail to insert an element only
      * by throwing an exception.
      *
-     * @param e the element to add
+     * @param patient the element to add
      * @return <tt>true</tt> if the element was added to this queue, else
      * <tt>false</tt>
      * @throws ClassCastException       if the class of the specified element
@@ -332,7 +326,7 @@ public class VacSysHeap<E> implements VacSysPriorityQueue<E> {
      *                                  prevents it from being added to this queue
      */
     @Override
-    public boolean offer(E e) {
+    public boolean offer(Patient patient) {
         // TODO
         return false;
     }
@@ -343,10 +337,10 @@ public class VacSysHeap<E> implements VacSysPriorityQueue<E> {
      * queue is empty.
      *
      * @return the head of this queue
-     * @throws NoSuchElementException if this queue is empty
+     * @throws java.util.NoSuchElementException if this queue is empty
      */
     @Override
-    public E remove() {
+    public Patient remove() {
         // TODO
         return null;
     }
@@ -358,7 +352,7 @@ public class VacSysHeap<E> implements VacSysPriorityQueue<E> {
      * @return the head of this queue, or <tt>null</tt> if this queue is empty
      */
     @Override
-    public E poll() {
+    public Patient poll() {
         // TODO
         return null;
     }
@@ -369,10 +363,10 @@ public class VacSysHeap<E> implements VacSysPriorityQueue<E> {
      * if this queue is empty.
      *
      * @return the head of this queue
-     * @throws NoSuchElementException if this queue is empty
+     * @throws java.util.NoSuchElementException if this queue is empty
      */
     @Override
-    public E element() {
+    public Patient element() {
         // TODO
         return null;
     }
@@ -384,7 +378,7 @@ public class VacSysHeap<E> implements VacSysPriorityQueue<E> {
      * @return the head of this queue, or <tt>null</tt> if this queue is empty
      */
     @Override
-    public E peek() {
+    public Patient peek() {
         // TODO
         return null;
     }
