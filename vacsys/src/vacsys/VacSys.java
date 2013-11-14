@@ -1,5 +1,10 @@
 package vacsys;
 
+import java.io.BufferedWriter;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.util.concurrent.ArrayBlockingQueue;
+
 /**
  * System to regulate treatment to patients based on a number of criteria
  */
@@ -37,12 +42,10 @@ public class VacSys {
 
     /**
      * Remove the next request from the system
-     *
      * @return Comma-Delimited String on Patient Fields name, age, zip
      */
     public String remove() {
-        // TODO Remove the next request from the system
-        return "";
+        return priorityQueue.poll().toString();
     }
 
     /**
@@ -50,10 +53,26 @@ public class VacSys {
      *
      * @param num      of records to save
      * @param filename to save in
-     * @return
+     * @return success
      */
     public boolean remove(int num, String filename) {
-        // TODO Remove num requests and store them in a CSV format in filename
-        return false;
+        ArrayBlockingQueue<String> results = new ArrayBlockingQueue<String>(num) {
+        };
+
+        while (num > 0) {
+            results.add(priorityQueue.poll().toString());
+            num--;
+        }
+        try {
+            BufferedWriter writer = new BufferedWriter(new FileWriter(filename));
+            while (!results.isEmpty()) {
+                writer.write(results.poll());
+            }
+        } catch (IOException x) {
+            return false;
+        } catch (ArrayIndexOutOfBoundsException x) {
+            return false;
+        }
+        return true;
     }
 }
