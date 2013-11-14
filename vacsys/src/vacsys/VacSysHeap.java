@@ -327,4 +327,15 @@ public class VacSysHeap<E> implements VacSysPriorityQueue<E> {
     public void clear() {
         // TODO
     }
+
+    /**
+     * Retrieves and removes the head of this queue, or returns null if this queue is empty.
+     *
+     * @return head of Queue
+     */
+    @Override
+    public E poll() {
+        // TODO
+        return null;
+    }
 }
