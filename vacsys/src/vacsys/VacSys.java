@@ -10,6 +10,8 @@ import java.lang.Integer;
 
 /**
  * System to regulate treatment to patients based on a number of criteria
+ *
+ * @author Travis
  */
 public class VacSys {
 

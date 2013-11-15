@@ -9,6 +9,13 @@ public class Patient extends Person implements Comparable<Patient> {
 
     protected int popConstant;
 
+    /**
+     * Build a patient from the expected string
+     * @param name of our patient
+     * @param age of our patient
+     * @param zip of our patient
+     * @param popConstant property calculated to be multiplied in priority
+     */
     public Patient(String name, int age, String zip, int popConstant) {
         super(name, age, zip);
         this.popConstant = popConstant;
@@ -67,6 +74,10 @@ public class Patient extends Person implements Comparable<Patient> {
         return this.priorityValue() - o.priorityValue();
     }
 
+    /**
+     * Help build a CSV file
+     * @return CSV-like string
+     */
     @Override
     public String toString() {
         return this.name + ", " + this.age + ", " + this.zip;
