@@ -11,6 +11,10 @@ public class VacSysHeap implements VacSysPriorityQueue {
 
     protected ArrayList<PatientQueue> queues;
 
+    public VacSysHeap() {
+        queues = new ArrayList<PatientQueue>();
+    }
+
     /**
      * Returns the number of elements in this collection.  If this collection
      * contains more than <tt>Integer.MAX_VALUE</tt> elements, returns

@@ -4,6 +4,9 @@ import java.io.*;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.concurrent.ArrayBlockingQueue;
+import java.util.ArrayDeque;
+import java.util.Iterator;
+import java.lang.Integer;
 
 /**
  * System to regulate treatment to patients based on a number of criteria
@@ -31,16 +34,32 @@ public class VacSys {
         BufferedReader reader;
         ArrayList<String[]> lines = new ArrayList<String[]>();
         String line;
+        String[] lineItems;
 
         // toFile
         // build lines for each patient where [0] = name, [1] = age, [2] = zip
         reader = new BufferedReader(new FileReader(filename));
         while ((line = reader.readLine()) != null) {
-            lines.add(line.split(","));
+            lineItems = line.split(",");
+            lineItems[0] = lineItems[0].trim();
+            lineItems[1] = lineItems[1].trim();
+            lineItems[2] = lineItems[2].trim();
+            lines.add(lineItems);
         }
 
         this.buildZPops(lines);
         this.buildTPop(lines);
+
+        priorityQueue = new VacSysHeap();
+
+        Iterator<String[]> iter = lines.iterator();
+        while(iter.hasNext()) {
+            lineItems = iter.next();
+            String name = lineItems[0].trim();
+            int age = Integer.parseInt(lineItems[1].trim());
+            String zip = lineItems[2].trim();
+            insert(name, age, zip);
+        }
     }
 
     /**
@@ -110,18 +129,19 @@ public class VacSys {
      * @return success
      */
     public boolean remove(int num, String filename) {
-        ArrayBlockingQueue<String> results = new ArrayBlockingQueue<String>(num) {
-        };
+        ArrayDeque<String> results = new ArrayDeque<String>(num);
 
         while (num > 0) {
-            results.add(priorityQueue.poll().toString());
+            results.add(remove());
             num--;
         }
         try {
             BufferedWriter writer = new BufferedWriter(new FileWriter(filename));
             while (!results.isEmpty()) {
                 writer.write(results.poll());
+                writer.newLine();
             }
+            writer.flush();
         } catch (IOException x) {
             return false;
         } catch (ArrayIndexOutOfBoundsException x) {
