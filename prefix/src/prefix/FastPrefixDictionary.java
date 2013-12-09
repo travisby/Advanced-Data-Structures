@@ -11,14 +11,30 @@ public class FastPrefixDictionary implements PrefixDictionary {
     private PrefixHashMap<Character, PrefixHashMap> prefixHashMap;
 
     public FastPrefixDictionary(String filename) {
-
+        prefixHashMap = new PrefixHashMap<Character, PrefixHashMap>();
 
         try {
             BufferedReader file = new BufferedReader(new FileReader(filename));
             String line;
             String[] lineList;
             while ((line = file.readLine()) != null) {
-                // TODO build from file
+                String word = line.split(",")[0];
+                int value = Integer.parseInt(line.split(",")[1]);
+                char[] letters = word.toCharArray();
+                PrefixHashMap<Character, PrefixHashMap> hashMapHandle = prefixHashMap;
+
+                // go to our place in the hashmap
+                for (int i = 0; i < letters.length; i++) {
+                    Character letter = new Character(letters[i]);
+
+                    // if the letter did not exist... create it
+                    if (!hashMapHandle.containsKey(letter)) {
+                        hashMapHandle.put(letter, new PrefixHashMap<Character, PrefixHashMap>());
+                    }
+                    hashMapHandle = (PrefixHashMap<Character, PrefixHashMap>) hashMapHandle.get(letter);
+                }
+                // and set the value
+                hashMapHandle.setValue(value);
             }
             file.close();
         } catch (Exception ex) {
