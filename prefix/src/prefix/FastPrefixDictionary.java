@@ -8,7 +8,10 @@ import java.io.FileReader;
  */
 public class FastPrefixDictionary implements PrefixDictionary {
 
+    private PrefixHashMap<Character, PrefixHashMap> prefixHashMap;
+
     public FastPrefixDictionary(String filename) {
+
 
         try {
             BufferedReader file = new BufferedReader(new FileReader(filename));
