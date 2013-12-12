@@ -23,8 +23,10 @@ public class FastPrefixDictionary implements PrefixDictionary {
                 char[] letters = word.toCharArray();
                 PrefixHashMap<Character, PrefixHashMap> hashMapHandle = prefixHashMap;
 
-                // go to our place in the hashmap
+                // go to our place a in the hashmap
                 for (int i = 0; i < letters.length; i++) {
+                    // increment this hashmap's value to include our new value that will be underneath it
+                    hashMapHandle.incValue(value);
                     Character letter = new Character(letters[i]);
 
                     // if the letter did not exist... create it
@@ -34,7 +36,7 @@ public class FastPrefixDictionary implements PrefixDictionary {
                     hashMapHandle = (PrefixHashMap<Character, PrefixHashMap>) hashMapHandle.get(letter);
                 }
                 // and set the value
-                hashMapHandle.setValue(value);
+                hashMapHandle.incValue(value);
             }
             file.close();
         } catch (Exception ex) {
@@ -45,7 +47,7 @@ public class FastPrefixDictionary implements PrefixDictionary {
 
     @Override
     public long sum(String prefix) {
-        // TODO
-        return 0;
+        // find the handle where we are located
+        return prefixHashMap.sum(prefix);
     }
 }
