@@ -19,7 +19,17 @@ public class PrefixHashMap<T, Y> extends HashMap {
     }
 
 
-    public void setValue(int value) {
-        this.value = value;
+    public void incValue(int incr) {
+        value += incr;
+    }
+
+    public int sum(String prefix) {
+        // base case
+        if (prefix.length() == 1) {
+            return value;
+        }
+
+        // dive in one letter deeper
+        return ((PrefixHashMap<T, Y>) get(prefix.charAt(0))).sum(prefix.substring(1));
     }
 }
