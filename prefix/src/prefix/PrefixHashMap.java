@@ -7,14 +7,14 @@ import java.util.HashMap;
  */
 public class PrefixHashMap<T, Y> extends HashMap {
 
-    private int value;
+    private long value;
 
     public PrefixHashMap() {
         super(26);
         value = 0;
     }
 
-    public int getValue() {
+    public long getValue() {
         return value;
     }
 
@@ -23,13 +23,20 @@ public class PrefixHashMap<T, Y> extends HashMap {
         value += incr;
     }
 
-    public int sum(String prefix) {
+    public long sum(String prefix) {
+
         // base case
         if (prefix.length() == 1) {
-            return value;
+            return ((PrefixHashMap<T, Y>) get(prefix.charAt(0))).getValue();
         }
 
         // dive in one letter deeper
-        return ((PrefixHashMap<T, Y>) get(prefix.charAt(0))).sum(prefix.substring(1));
+        // catch an exception in case the letter does not exist
+        try {
+            System.out.println(prefix.substring(1));
+            return ((PrefixHashMap<T, Y>) get(prefix.charAt(0))).sum(prefix.substring(1));
+        } catch (NullPointerException e) {
+            return 0;
+        }
     }
 }
